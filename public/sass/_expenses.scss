@@ -1,3 +1,5 @@
+/** Create Expense **/
+
 $expense-form-width	: 300px;
 $pay-text-width: 60px;
 
@@ -79,4 +81,20 @@ $pay-text-width: 60px;
 	display: inline-block;
 	text-align: center;
 	width: $pay-text-width;
+}
+
+/** Show Expense **/
+
+.show-expense-content {
+	@extend .content;
+	min-width: 300px;
+	width: 50%;
+}
+
+.expense-dues-header {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
 }
