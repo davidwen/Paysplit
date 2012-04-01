@@ -1,6 +1,7 @@
 #{extends 'header.html' /}
 #{set title:'Paysplit - Splitting expenses made easy' /}
 #{set headerText:'Display Transactions' /}
+
 #{set 'moreStyles'}
  <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table.css'}">
  <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_page.css'}">
@@ -10,91 +11,4 @@
  <script src="@{'/public/datatables/media/js/jquery.dataTables.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{/set}
 
-%{
-  List<models.User> users = models.User.findAll();
-  String userData = "";
-  for (models.User user : users) {
-    userData += user.username + " ";
-  }
-}%
-
-<div class="transactions-content">
-  <div class="secondary-header">${user.username}'s Transactions</div>
-  <form id="search-form" method="get">
-    <div class="search-form-container">
-      <span class="search-form-section">
-        User:
-        <input type="text" id="searchUser" name="searchUser" value="${params.searchUser}">
-      </span>
-      <span class="search-form-section">
-        Type:
-        <select name="searchType" id="searchType">
-          <option value=""></option>
-          #{list items:models.Transaction.Type.toStrings(), as:'type'}
-            <option value=${type}>${type}</option>
-          #{/list}
-        </select>
-      </span>
-      <span class="search-form-section">
-        <input type="submit" value="Filter" name="search" id="search" class="search-form-submit-button">
-      </span>
-    </div>
-  </form>
-  <table id="transaction-table" class="datatable">
-    <thead>
-      <tr>
-        <td>Type</td>
-        <td>Description</td>
-        <td>From</td>
-        <td>To</td>
-        <td>Amount</td>
-        <td>Date</td>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-</div>
-
-<script>
-var data = '${userData}'.split(" ");
-$(function() {
-	$( "#searchUser" ).autocomplete({ source: data });
-});
-
-$(document).ready(function() {
-    $( '#searchType' ).val("${params.searchType}");
-    $('#transaction-table').dataTable({
-        "bJQueryUI" : true,
-        "aaSorting" : [[5,'desc']],
-        "bFilter": false,
-        "bSort" : false,
-        "sAjaxSource": "@{listTransactionsDataTable()}",
-        "bServerSide": true,
-        "fnServerData": function(source, params, callback) {
-          $('#search-form input[name], #search-form select[name]').each(function() {
-            var value = $(this).val();
-            params.push({name: $(this).attr('name'), value: value});
-          });
-          $.getJSON(source, params, function(json, status, xhr) {
-            if (xhr.status != 304) {
-              callback(json);
-            }});
-        },
-        "aoColumns": [
-          { "sWidth": "10%" },
-          { "sWidth": "30%" },
-          { "sWidth": "15%" },
-          { "sWidth": "15%" },
-          { "sWidth": "10%" },
-          { "sWidth": "20%" }
-        ],
-        "oLanguage" : {
-            "sEmptyTable" : "No transactions"
-        }
-    });
-    $(window).bind('resize', function() {
-        $('#transaction-table').width("100%");
-    });
-});
-</script>
+#{include 'Transactions/_showTransactions.html' /}

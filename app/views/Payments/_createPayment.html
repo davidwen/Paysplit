@@ -1,0 +1,143 @@
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_page.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table_jui.css'}">
+#{/set}
+
+#{set 'moreScripts'}
+ <script src="@{'/public/datatables/media/js/jquery.dataTables.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+%{
+  List<models.User> users = models.User.findAll();
+  userData = "";
+  for (models.User user : users) {
+    userData += user.username + " ";
+  }
+}%
+
+#{if mode == "tutorial"}
+  %{ userData = "frank" }%
+  <div class="tutorial-info">
+    <p>
+      You've reached the payment submission page. From the balances
+      tables, we saw that we owed <b>frank</b> $10.50. Once we pay 
+      him back, we come here to submit that payment to him. 
+    </p>
+    <ol>
+      <li>
+        Enter $10.50 as the payment amount
+      </li>
+      <li>
+        Enter "frank" as the username this payment is going to
+      </li>
+      <li>
+        Enter a description to help you remember this payment if you want
+      </li>
+    </ol>
+    <p>
+      Click "Submit Payment" once you're done to complete the tutorial.
+      We're not going to check if you actually submitted the right
+      payment to <b>frank</b>...we trust you. Once you click
+      "Submit Payment", you'll be taken back to the dashboard. Feel
+      free to do the tutorial as many times as you need!
+    </p>
+  </div>
+#{/if}
+
+<div class="create-payment-content">
+  #{form @Payments.submitPayment()}
+    <input type="hidden" name="userId" value="${session.userId}">
+      <div class="secondary-header">Enter Payment</div>
+      <div class="form-container">
+        <div class="true-payment-from-user-container">
+          <input id="true-payment-from-user" type="radio" name="paymentFromUser" value="true" #{if flash.paymentFromUser != false}checked#{/if}>
+          <label for="true-payment-from-user">Payment is from you</label>
+        </div>
+        <div class="false-payment-from-user-container">
+          <input id="false-payment-from-user" type="radio" name="paymentFromUser" value="false" #{if flash.paymentFromUser == false}checked#{/if}>
+          <label for="false-payment-from-user">Payment is to you</label>
+        </div>
+        <div class="clear"></div>
+        <div class="form-section">
+          <div><span id="username-header" class="form-label-text"></span></div>
+          <div class="error">#{error 'username' /}</div>
+          <input type="text" class="form-input" name="username" id="username" value="${flash.username}">
+        </div>
+        <div class="form-section">
+          <div class="form-label-text">Amount ($):</div>
+          <div class="error">#{error 'amount' /}</div>
+          <input type="text" class="form-input" name="amount" value="${flash.amount}">
+        </div>
+        <div class="form-section">
+          <div class="form-label-text">Description: </div>
+          <input type="text" class="form-input" name="description" value="${flash.description}">
+        </div>
+        <div class="form-section">
+          #{if mode == "tutorial"}
+            #{a @Dashboard.dashboard(), class:'form-submit-button'}Submit Payment#{/a}
+          #{/if}
+          #{else}
+            <input type="submit" class="form-submit-button" value="Submit Payment">
+          #{/else}
+        </div>
+      </div>
+    </div>
+  #{/form}
+
+  <div id="interuser-container">
+    <div id="interuser"></div>
+  </div>
+</div>
+
+<script>
+var data = '${userData}'.split(" ");
+
+function showInteruserTable(username) {
+    if (username.length > 0 && $.inArray(username, data) >= 0) {
+        var showStatistics = #{jsAction @Interuser.showStatistics(':fromUser', ':toUser') /}
+        $('#interuser').load(
+           showStatistics({fromUser: '${session.username}', toUser: username}), 
+           function() {
+               $('#interuser').css('visibility', 'visible');
+               $(window).bind('resize', function() {
+                   $('#interuser-transactions-table').width("100%");
+               });
+           }
+        )
+    }
+}
+
+$(function() {
+    $('#username').autocomplete({ source: data });
+});
+
+$('input[name=amount]').change(function() {
+    var value = Number($(this).val()).toFixed(2);
+    if (isNaN(value)) {
+        $(this).val('');
+    } else {
+        $(this).val(value);
+    }
+});
+
+$('input[name=paymentFromUser]').change(function() {
+    var value = $(this).val();
+    if (value == 'true') {
+        $('#username-header').text('Who you paid (username):');
+    } else {
+        $('#username-header').text('Who paid you (username):');
+    }
+});
+$('input[name=paymentFromUser]:first').change();
+
+$('#username').keyup(function() {
+    var username = $('#username').val();
+    showInteruserTable(username);
+});
+
+$('#username').bind('autocompleteselect', function(event, ui) {
+    var username = ui.item.value;
+    showInteruserTable(username);
+});
+</script>

@@ -1,0 +1,109 @@
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_page.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table_jui.css'}">
+#{/set}
+#{set 'moreScripts'}
+ <script src="@{'/public/datatables/media/js/jquery.dataTables.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+#{if mode == "tutorial"}
+  <div class="tutorial-info">
+    <p>
+      This is the balances page. This is the page you want to go to
+      if you need to check where you stand with other users. If you
+      created dues earlier in the tutorial, you should see that the
+      users from the expense you made should appear in the table of
+      people that owe you money.
+    </p>
+    <p>
+      We stuck in a user <b>frank</b> that you owe $10.50 to. Let's 
+      pretend that you already paid <b>frank</b> the $10.50 that you
+      owe him. This is a payment that you need to submit. Click the
+      "Submit Payment" link from the top bar to continue.
+    </p>
+  </div>
+#{/if}
+
+<div class="content">
+  <div class="balances-owed-from">
+    <div class="content">
+      <div class="balances-header">Balances Owed From You</div>
+      <table id="positive-balances-table" class="datatable">
+        <thead>
+          <tr>
+            <td>User</td>
+            <td>Balance Owed</td>
+          </tr>
+        </thead>
+        <tbody>
+          #{list items:positiveBalances, as:'balance'}
+          <tr>
+            <td>#{a @Users.showUser(balance.toUser.id)}${balance.toUser.username}#{/a}</td>
+            <td>$${balance.balance.format("0.00")}</td>
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="balances-owed-to">
+    <div class="content">
+      <div class="balances-header">Balances Owed To You</div>
+      <table id="negative-balances-table" class="datatable">
+        <thead>
+          <tr>
+            <td>User</td>
+            <td>Balance Owed</td>
+          </tr>
+        </thead>
+        <tbody>
+          #{list items:negativeBalances, as:'balance'}
+          <tr>
+            <td>#{a @Users.showUser(balance.toUser.id)}${balance.toUser.username}#{/a}</td>
+            <td>$${balance.balance.format("0.00")}</td>
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#positive-balances-table').dataTable({
+    "bJQueryUI" : true,
+    "bInfo" : false,
+    "bFilter" : false,
+    "bPaginate" : false,
+    "aaSorting" : [[1,'desc']],
+    "aoColumns": [
+                  { "sWidth": "50%" },
+                  { "sWidth": "50%" }
+        ],
+    "oLanguage" : {
+      "sEmptyTable" : "No outstanding balances"
+    }
+  });
+  $('#negative-balances-table').dataTable({
+    "bJQueryUI" : true,
+    "bInfo" : false,
+    "bFilter" : false,
+    "bPaginate" : false,
+    "aaSorting" : [[1,'desc']],
+    "aoColumns": [
+                  { "sWidth": "50%" },
+                  { "sWidth": "50%" }
+        ],
+    "oLanguage" : {
+      "sEmptyTable" : "No outstanding balances"
+    }
+  });
+
+  $(window).bind('resize', function() {
+        $('#positive-balances-table').width("100%");
+        $('#negative-balances-table').width("100%");
+    });
+});
+</script>

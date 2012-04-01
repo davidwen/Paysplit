@@ -96,11 +96,17 @@ body {
 }
 
 /* line 35, ../sass/_base.scss */
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 40, ../sass/_base.scss */
 ul.indented {
   padding: 0 0 0 40px;
 }
 
-/* line 51, ../sass/_base.scss */
+/* line 56, ../sass/_base.scss */
 .secondary-header {
   font-size: 24px;
   font-weight: bold;
@@ -646,25 +652,33 @@ header span {
 }
 
 /* line 1, ../sass/_balances.scss */
+.balances-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* line 8, ../sass/_balances.scss */
 .balances-owed-from {
   float: left;
   width: 50%;
 }
 @media only screen and (max-width: 768px) {
-  /* line 1, ../sass/_balances.scss */
+  /* line 8, ../sass/_balances.scss */
   .balances-owed-from {
     float: none;
     width: 100%;
   }
 }
 
-/* line 11, ../sass/_balances.scss */
+/* line 18, ../sass/_balances.scss */
 .balances-owed-to {
   float: right;
   width: 50%;
 }
 @media only screen and (max-width: 768px) {
-  /* line 11, ../sass/_balances.scss */
+  /* line 18, ../sass/_balances.scss */
   .balances-owed-to {
     float: none;
     width: 100%;
@@ -766,4 +780,33 @@ header span {
   background-color: #ffffaa;
   border-bottom: 5px solid #222222;
   padding: 10px 20%;
+}
+
+/* line 8, ../sass/_tutorial.scss */
+.tutorial-highlight {
+  background-color: green;
+}
+@media only screen and (max-width: 768px) {
+  /* line 8, ../sass/_tutorial.scss */
+  .tutorial-highlight {
+    background-color: #ff3;
+  }
+}
+
+/* line 16, ../sass/_tutorial.scss */
+.tutorial-intro {
+  margin: 0 auto;
+  min-width: 450px;
+  width: 60%;
+}
+
+/* line 23, ../sass/_tutorial.scss */
+.tutorial-header {
+  background-color: #ff7;
+}
+@media only screen and (max-width: 768 px) {
+  /* line 23, ../sass/_tutorial.scss */
+  .tutorial-header {
+    font-size: 36px;
+  }
 }

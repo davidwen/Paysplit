@@ -6,15 +6,15 @@
     <li>#{a @Account.showSettings()}Account Settings#{/a}</li>
     <li>#{a @Application.index()}Log Out#{/a}</li>
   </ul>
-  #{render 'nav.html' /}
+  #{include 'nav.html' /}
 </div>
 
 <div class="clear"></div>
 
-<header>
+<header #{if mode == "tutorial"}class="tutorial-header"#{/if}>
   <span>#{get 'headerText' /}</span>
 </header>
 <div class="header-bar">
-  #{render 'nav.html' /}
+  #{include 'nav.html' /}
 </div>
 #{doLayout /}

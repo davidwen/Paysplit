@@ -31,11 +31,15 @@ public class Tutorial extends Controller{
             Sets.newHashSet("anne", "bob", "carl", "dan", "eve");
 
     public static void start() {
-        render();
+        String mode = "tutorial";
+        String page = "start";
+        render(mode, page);
     }
 
     public static void createExpense() {
-        render();
+        String mode = "tutorial";
+        String page = "expenses";
+        render(mode, page);
     }
 
     public static void submitExpense(double amount, String description)
@@ -143,7 +147,11 @@ public class Tutorial extends Controller{
         Collections.sort(transactions, new Transaction.AddDateComparator());
         User user = User.fromSession(session);
         Cache.set("transactions", transactions);
-        render(user, transactions);
+
+        String mode = "tutorial";
+        String page = "transactions";
+
+        render(user, transactions, mode, page);
     }
 
     public static void showBalances() {
@@ -170,11 +178,17 @@ public class Tutorial extends Controller{
         balance.toUser = toUser;
         balance.balance = 10.50;
         positiveBalances.add(balance);
-        render(user, positiveBalances, negativeBalances);
+
+        String mode = "tutorial";
+        String page = "balances";
+
+        render(user, positiveBalances, negativeBalances, mode, page);
     }
 
     public static void createPayment() {
-        render();
+        String mode = "tutorial";
+        String page = "payments";
+        render(mode, page);
     }
 
 }

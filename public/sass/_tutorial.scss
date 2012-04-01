@@ -4,3 +4,26 @@
 	border-bottom: 5px solid $dark-color;
 	padding: 10px 20%;
 }
+
+.tutorial-highlight {
+	background-color: green;
+
+	@media only screen and (max-width: 768px) {
+		background-color: #ff3;
+	}
+}
+
+.tutorial-intro {
+	margin: 0 auto;
+	min-width: 450px;
+	width: 60%;
+}
+
+
+.tutorial-header {
+	background-color: #ff7;
+
+	@media only screen and (max-width: 768 px) {
+		font-size: 36px;
+	}
+}

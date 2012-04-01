@@ -1,8 +1,46 @@
 <ul class="nav">
-  <li>#{a @Dashboard.dashboard()}Home#{/a}</li>
-  <li>#{a @Expenses.createExpense()}Submit Expense#{/a}</li>
-  <li>#{a @Payments.createPayment()}Submit Payment#{/a}</li>
-  <li>#{a @Balances.showBalances()}Balances#{/a}</li>
-  <li>#{a @Transactions.showTransactions()}Transactions#{/a}</li>
-  <li>#{a @Application.help()}FAQ#{/a}</li>
+  <li>
+    #{a @Dashboard.dashboard()}Home#{if mode=="tutorial"} (Exit Tutorial)#{/if}#{/a}
+  </li>
+  <li>
+    #{if page == 'start'}
+      #{a @Tutorial.createExpense(), class:'tutorial-highlight'}Submit Expense#{/a}
+    #{/if}
+    #{elseif mode == 'tutorial'}
+      <a>Submit Expense</a>
+    #{/elseif}
+    #{else}
+      #{a @Expenses.createExpense()}Submit Expense#{/a}
+    #{/else}
+  </li>
+  <li>
+    #{if page =='balances'}
+      #{a @Tutorial.createPayment(), class:'tutorial-highlight'}Submit Payment#{/a}
+    #{/if}
+    #{elseif mode == 'tutorial'}
+      <a>Submit Payment</a>
+    #{/elseif}
+    #{else}
+      #{a @Payments.createPayment()}Submit Payment#{/a}
+    #{/else}
+  </li>
+  <li>
+    #{if page =='transactions'}
+      #{a @Tutorial.showBalances(), class:'tutorial-highlight'}Balances#{/a}
+    #{/if}
+    #{elseif mode == 'tutorial'}
+      <a>Balances</a>
+    #{/elseif}
+    #{else}
+      #{a @Balances.showBalances()}Balances#{/a}
+    #{/else}
+  </li>
+  <li>
+    #{if disableTransactions}Transactions#{/if}
+    #{else}#{a @Transactions.showTransactions()}Transactions#{/a}#{/else}
+  </li>
+  <li>
+    #{if disableFaq}FAQ#{/if}
+    #{else}#{a @Application.help()}FAQ#{/a}#{/else}
+  </li>
 </ul>

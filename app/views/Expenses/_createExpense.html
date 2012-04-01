@@ -1,0 +1,181 @@
+%{
+  List<models.User> users = models.User.findAll();
+  userData = "";
+  for (models.User user : users) {
+    userData += user.username + " ";
+  }
+}%
+
+#{if mode == "tutorial"}
+  %{ userData = "anne bob carl dan eve"; }%
+  <div class="tutorial-info">
+    <p>
+      Welcome to the expense submission page! This is where you enter 
+      payments that you would like to share with other users.
+    </p>
+    <ol>
+      <li>
+        Enter in an expense amount and a description to let you
+        remember what the expense was for. 
+      </li>
+      <li>
+        Click the "Add Due" button to add other users you would like
+        to share the expense with. For each due that you add, enter a
+        username (in the tutorial, the other usernames that you can 
+        interact with are anne, bob, carl, dan, and eve) and the 
+        amount that the user should owe you.
+      </li>
+      <li>
+        Once you're done filling in the expense and dues, hit 
+        "Submit Expense" to go to the next step of the tutorial.
+      </li>
+    </ol>
+  </div>
+#{/if}
+
+<div class="submit-expense-content">
+  #{form @submitExpense()}
+    <input type="hidden" name="userId" value="${session.userId}">
+    <div class="submit-expense-enter-expense">
+      <div class="submit-expense-form-container">
+        <div class="submit-expense-step">1. Enter Expense</div>
+        <div class="error">#{error 'amount' /}</div>
+        <div class="form-section">
+          <div>Amount ($): </div>
+          <input type="text" id="expenseAmount" name="amount" class="submit-expense-form-input" value="${flash.amount}">
+        </div>
+        <div class="form-section">
+          <div>Description: </div>
+          <input type="text" name="description" class="submit-expense-form-input" value="${flash.description}">
+        </div>
+      </div>
+    </div>
+    <div class="submit-expense-enter-dues">
+      <div class="submit-expense-form-container">
+        <div class="submit-expense-step">2. Enter Dues</div>
+        <div class="error">#{error 'due' /}</div>
+        <div class="expense-dues-buttons">
+          <input type="button" id="addDue" class="submit-expense-add-due button" value="Add Due" />
+          <input type="button" class="submit-expense-remove-due button" value="Remove Due" onClick="removeRow()" />
+          <input type="button" class="submit-expense-split-due button" value="Split Dues Evenly" onClick="splitDues()" />
+        </div>
+        <div class="expense-dues"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="submit-expense-submit">
+      <input type="submit" class="submit-expense-submit-button" value="Submit Expense">
+    </div>
+  #{/form}
+</div>
+
+<script>
+var totalDues = 0;
+var data = '${userData}'.split(" ");
+
+function splitDues() {
+    var expenseAmount = document.getElementById('expenseAmount').value;
+    var dueAmount = Math.round(100 * expenseAmount / (totalDues + 1)) / 100;
+    for (var i = 1; i < totalDues + 1; i++) {
+        document.getElementById('dueAmount' + i).value = dueAmount.toFixed(2);
+    }
+    setSelfAmount();
+}
+
+function setSelfAmount() {
+    document.getElementById('expenseAmount').value = Number(document.getElementById('expenseAmount').value).toFixed(2);
+    var expenseAmount = document.getElementById('expenseAmount').value;
+    var dueAmount = 0;
+    for (var i = 1; i < totalDues + 1; i++) {
+        dueAmount += Number(document.getElementById('dueAmount' + i).value);
+    }
+    var selfAmount = Number(expenseAmount) - dueAmount;
+    document.getElementById('dueAmount0').value = selfAmount.toFixed(2);
+}
+
+function removeRow() {
+    if (totalDues > 0) {
+        var expenseDue = $('#expense-due' + totalDues)[0];
+        var expenseDues = $('.expense-dues')[0];
+        expenseDues.removeChild(expenseDue);
+        totalDues--;
+    }
+}
+
+$( "input[id*='Amount']" ).change(function() {
+	setSelfAmount();
+});
+
+$(document).ready(function() {
+    var expenseDues = $('.expense-dues')[0];
+
+    var expenseDue = document.createElement('div');
+    expenseDue.id = 'expense-due0';
+    expenseDue.className = 'center expense-due';
+
+    var userInput = document.createElement('input');
+    userInput.type = 'text';
+    userInput.name = 'dueUsername0';
+    userInput.id = 'dueUsername0';
+    userInput.value = "${session.username}";
+    userInput.className = 'submit-expense-user-input disabled';
+
+    var paySpan = document.createElement('span');
+    paySpan.innerHTML = 'pays $';
+    paySpan.className = 'submit-expense-pay-text';
+
+    var amountInput = document.createElement('input');
+    amountInput.type = 'text';
+    amountInput.name = 'dueAmount' + totalDues;
+    amountInput.id = 'dueAmount' + totalDues;
+    amountInput.className = 'submit-expense-amount-input disabled';
+    
+    expenseDue.appendChild(userInput);
+    expenseDue.appendChild(paySpan);
+    expenseDue.appendChild(amountInput);
+
+    expenseDues.appendChild(expenseDue);
+    $( "#dueUsername0" ).attr('readonly', 'true');
+    $( "#dueAmount0" ).attr('readonly', 'true');
+
+    $("#addDue").click(function() {
+        var expenseDues = $('.expense-dues')[0];
+        totalDues++;
+
+        var expenseDue = document.createElement('div');
+        expenseDue.id = 'expense-due' + totalDues;
+
+        var userInput = document.createElement('input');
+        userInput.type = 'text';
+        userInput.name = 'dueUsername' + totalDues;
+        userInput.id = 'dueUsername' + totalDues;
+        userInput.className = 'submit-expense-user-input';
+        userInput.placeholder = 'Enter username';
+
+        var paySpan = document.createElement('span');
+        paySpan.innerHTML = 'pays $';
+        paySpan.className = 'submit-expense-pay-text';
+
+        var amountInput = document.createElement('input');
+        amountInput.type = 'text';
+        amountInput.name = 'dueAmount' + totalDues;
+        amountInput.id = 'dueAmount' + totalDues;
+        amountInput.className = 'submit-expense-amount-input';
+        amountInput.placeholder = 'Enter amount';
+
+        expenseDue.appendChild(userInput);
+        expenseDue.appendChild(paySpan);
+        expenseDue.appendChild(amountInput);
+
+        expenseDues.appendChild(expenseDue);
+
+        $( "input[id^='dueUsername']" ).autocomplete({source: data});
+        $( "input[id^='dueAmount']" ).live('change', function() {
+            setSelfAmount();
+            for (var i = 1; i < totalDues + 1; i++) {
+                document.getElementById('dueAmount' + i).value = Number(document.getElementById('dueAmount' + i).value).toFixed(2);
+            }
+        });
+    });
+});
+</script>
