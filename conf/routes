@@ -14,7 +14,6 @@ GET		/payments/create						Payments.createPayment
 GET		/payments/show							Payments.showPayments
 GET		/payments/{paymentId}/show				Payments.showPayment
 GET		/balances/show							Balances.showBalances
-GET		/dues/show								Dues.showDues
 GET		/account/settings						Account.showSettings
 
 
