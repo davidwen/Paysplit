@@ -1,0 +1,5 @@
+# You can use this file to put in passwords/keys or other personal configurations if you don't want to put them in the default conf file
+
+application.secret=actual-application-secret
+
+%prod.db=mysql://username:password@localhost/dbname

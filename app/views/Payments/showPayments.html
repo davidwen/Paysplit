@@ -1,0 +1,86 @@
+#{extends 'header.html' /}
+#{set title:'Paysplit - Splitting expenses made easy' /}
+#{set headerText:'Display Payments' /}
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_page.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table_jui.css'}">
+#{/set}
+#{set 'moreScripts'}
+ <script src="@{'/public/datatables/media/js/jquery.dataTables.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+<div class="two-column-container">
+  <div class="two-column center">
+    <h3>Payments Paid By ${user.username}</h3>
+    <div class="table-container">
+      <table id="paid-from-table" class="datatable">
+        <thead>
+          <tr>
+            <td>Payment ID</td>
+            <td>Amount</td>
+            <td>Paid To</td>
+            <td>Date</td>
+          </tr>
+        </thead>
+        #{list items:paymentsTo, as:'payment'}
+        <tr>
+          <td><a href="@{Payments.showPayment(payment.id)}">${payment.id}</a>
+          <td>$${payment.amount.format("0.00")}</td>
+          <td>${payment.toUser.username}</td>
+          <td>${payment.addDate.format("MM/dd/yyyy hh:mm a")}</td>
+        </tr>
+        #{/list}
+      </table>
+    </div>
+  </div>
+  <div class="two-column center">
+    <h3>Payments Paid To ${user.username}</h3>
+    <div class="table-container">
+      <table id="paid-to-table" class="datatable">
+        <thead>
+          <tr>
+            <td>Payment ID</td>
+            <td>Amount</td>
+            <td>Paid From</td>
+            <td>Date</td>
+          </tr>
+        </thead>
+        #{list items:paymentsFrom, as:'payment'}
+        <tr>
+          <td><a href="@{Payments.showPayment(payment.id)}">${payment.id}</a>
+          <td>$${payment.amount.format("0.00")}</td>
+          <td>${payment.fromUser.username}</td>
+          <td>${payment.addDate.format("MM/dd/yyyy hh:mm a")}</td>
+        </tr>
+        #{/list}
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+	$('#paid-to-table').dataTable({
+		"bJQueryUI" : true,
+		"bInfo" : false,
+		"bFilter" : false,
+		"bPaginate" : false,
+		"aaSorting" : [[3,'desc']],
+		"oLanguage" : {
+			"sEmptyTable" : "No payments"
+		}
+	});
+
+	$('#paid-from-table').dataTable({
+		"bJQueryUI" : true,
+		"bInfo" : false,
+		"bFilter" : false,
+		"bPaginate" : false,
+		"aaSorting" : [[3,'desc']],
+		"oLanguage" : {
+			"sEmptyTable" : "No payments"
+		}
+	});
+});
+</script>

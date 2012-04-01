@@ -1,0 +1,44 @@
+#{extends 'header.html' /}
+#{set title:'Paysplit - Splitting expenses made easy' /}
+#{set headerText:'User Details' /}
+#{set 'moreStyles'}
+  <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table.css'}">
+  <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_page.css'}">
+  <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table_jui.css'}">
+#{/set}
+#{set 'moreScripts'}
+  <script src="@{'/public/datatables/media/js/jquery.dataTables.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+<div id="content">
+  <div class="displaytable-container">
+    <table class="displaytable">
+      <tbody>
+        <tr>
+          <td>Username:</td>
+          <td>${user.username}</td>
+        </tr>
+        <tr>
+          <td>Member since:</td>
+          <td>${user.addDate.format("MM/dd/yyyy")}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="clear"><!-- spacer --></div>
+  
+  <div id="interuser-container"></div>
+</div>
+
+<script>
+$(function() {
+  var showStatistics = #{jsAction @Interuser.showStatistics(':fromUser', ':toUser') /}
+  $('#interuser-container').load(
+       showStatistics({fromUser: '${session.username}', toUser: '${user.username}'}), 
+       function() {
+           $('#interuser-container').css('visibility', 'visible')
+       }
+    )
+});
+</script>

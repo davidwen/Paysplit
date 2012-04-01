@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+GET		/register								Application.register
+GET		/dashboard								Dashboard.dashboard
+GET		/users/{userId}/show					Users.showUser
+GET		/expenses/create						Expenses.createExpense
+GET		/expenses/show							Expenses.showExpenses
+GET		/expenses/{expenseId}/show				Expenses.showExpense
+GET		/payments/create						Payments.createPayment
+GET		/payments/show							Payments.showPayments
+GET		/payments/{paymentId}/show				Payments.showPayment
+GET		/balances/show							Balances.showBalances
+GET		/dues/show								Dues.showDues
+GET		/account/settings						Account.showSettings
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

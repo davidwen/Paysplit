@@ -1,0 +1,49 @@
+$form-width: 300px;
+
+.disabled {
+  background-color: #eee;
+}
+
+@mixin _form-container($width) {
+	width: $width;
+	margin-bottom: 25px;
+}
+
+@mixin _form-input($width) {
+	width: $width - 6px;
+}
+
+@mixin _form-submit-button($width) {
+	@extend .button;
+	background-color: $button-green;
+	width: $width;
+}
+
+.form-container {
+	@include _form-container($form-width);
+}
+
+.form-section {
+	margin-top: 3px;
+	margin-bottom: 10px;
+}
+
+.form-section-label {
+	color: $paysplit-green;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-label-text {
+	font-weight: bold;
+}
+
+.form-input {
+	@include _form-input($form-width);
+}
+
+.form-submit-button {
+	@include _form-submit-button($form-width);
+}

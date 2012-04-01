@@ -1,0 +1,17 @@
+.create-payment-content {
+	@extend .content;
+	@include _centered;
+	width: 300px;
+}
+
+.create-payment-header {
+	@include _secondary-header
+}
+
+.true-payment-from-user-container {
+	float: left;
+}
+
+.false-payment-from-user-container {
+	float: right;
+}

@@ -1,0 +1,35 @@
+@import "compass/utilities/tables";
+
+.datatable {
+	text-align: left;
+	width: 100%;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.displaytable {
+	@include table-scaffolding;
+
+	border-spacing: 0px;
+	text-align: left;
+	width: 100%;
+
+	thead td {
+		background-color: #555;
+		color: #ddd;	
+	}
+
+	tr:nth-child(even) {
+		background-color: #fff;
+	}
+
+	tr:nth-child(odd) {
+		background-color: #9f9;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}

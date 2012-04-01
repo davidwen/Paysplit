@@ -1,0 +1,72 @@
+.dashboard-content {
+	@extend .content;
+	min-width: 720px;
+	width: 60%;	
+
+	@media only screen and (max-width: 768px) {
+		min-width: 320px;
+		width: 80%;
+	}
+}
+
+.dashboard-balanced-owed-by {
+	float: left;
+	text-align: center;
+	width: 50%;
+
+	@media only screen and (max-width: 768px) {
+		float: none;
+		margin-bottom: 15px;
+		width: 100%;
+	}
+}
+
+.dashboard-balanced-owed-to {
+	float: right;
+	text-align: center;
+	width: 50%;
+
+	@media only screen and (max-width: 768px) {
+		float: none;
+		width: 100%;
+	}
+}
+
+.dashboard-unbalanced {
+	background-color: #8B0000;
+}
+
+.dashboard-balanced {
+	background-color: #86B542;
+}
+
+.balance-display {
+	color: #eee;
+	display: block;
+	font-size: 18px;
+	line-height: 100px;
+	height: 100px;
+	margin: 0 auto;
+	text-decoration: none;
+	width: 80%;
+
+
+	&:hover {
+		color: #ccc;
+	}
+}
+
+.dashboard-recent-transactions {
+	margin-top: 40px;
+}
+
+.dashboard-table-label {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.dashboard-footer {
+	margin-top: 80px;
+	text-align: center;
+}

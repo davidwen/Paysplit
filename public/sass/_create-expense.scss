@@ -1,0 +1,82 @@
+$expense-form-width	: 300px;
+$pay-text-width: 60px;
+
+.submit-expense-content {
+	@extend .content;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.submit-expense-form-container {
+	@include _form-container($expense-form-width);
+	@include _centered;
+}
+
+.submit-expense-form-input {
+	@include _form-input($expense-form-width);
+}
+
+.submit-expense-submit-button {
+	@include _form-submit-button($expense-form-width);
+}
+
+.submit-expense-enter-expense {
+	float: left;
+	width: 50%;
+
+	@media only screen and (max-width: 768px) {
+		float: none;
+		margin-bottom: 15px;
+		width: 100%;
+	}
+}
+
+.submit-expense-enter-dues {
+	float: right;
+	width: 50%;
+
+	@media only screen and (max-width: 768px) {
+		float: none;
+		margin-bottom: 15px;
+		width: 100%;
+	}	
+}
+
+.submit-expense-submit {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.submit-expense-step {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.expense-dues-buttons {
+	@include _centered;
+	margin-top: 15px;
+	text-align: center;
+}
+
+.submit-expense-add-due {
+	background-color: $button-green;
+}
+
+.submit-expense-remove-due {
+	background-color: $button-red;
+}
+
+.submit-expense-split-due {
+	background-color: $button-blue;
+}
+
+.submit-expense-user-input, .submit-expense-amount-input {
+	width: ($expense-form-width - $pay-text-width)/2 - 6px;
+}
+
+.submit-expense-pay-text {
+	display: inline-block;
+	text-align: center;
+	width: $pay-text-width;
+}

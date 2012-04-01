@@ -1,0 +1,16 @@
+{
+  "sEcho": "${params.sEcho}",
+  "iTotalRecords": ${total},
+  "iTotalDisplayRecords": ${numMatched},
+  "aaData": [
+    #{list transactions}
+      [ "<a href='${_.url}'>${_.type}</a>",
+      	"${_.description}",
+        "<a href='@{Users.showUser(_.fromUser.id)}'>${_.fromUser.username}</a>",
+        "<a href='@{Users.showUser(_.toUser?.id)}'>${_.toUser?.username}</a>",
+        "$${_.amount.format("0.00")}",
+        "${_.addDate.format("MM/dd/yyyy hh:mm a")}"
+      ]#{if !_isLast},#{/if}
+    #{/list}
+  ]
+}

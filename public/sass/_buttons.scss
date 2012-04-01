@@ -1,0 +1,50 @@
+$button-red     : #800000;
+$button-purple  : #9400bf;
+$button-green   : #58aa00;
+$button-orange  : #ff9c00;
+$button-blue    : #2c6da0;
+$button-black   : #333;
+
+.button {
+  padding: 5px 10px;
+  display: inline;
+  background: #777 url(/public/images/button.png) repeat-x bottom;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow: 1px 1px #666;
+
+  &:hover {
+    background-position: 0 center;
+  }
+
+  &:active {
+    background-position: 0 top;
+    padding: 6px 10px 4px;
+    position: relative;
+    top: 1px;
+  }
+}
+
+a.button {
+  display: block;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover, &:visited {
+    color: #fff;
+  }
+}
+
+.button.white { background-color: #fff; color: #000; text-shadow: 1px 1px #fff; }
+.button.small { font-size: 75%; padding: 3px 7px; }
+.button.small:active { padding: 4px 7px 2px; background-position: 0 top; }
+.button.large { font-size: 125%; padding: 7px 12px; }
+.button.large:active { padding: 8px 12px 6px; background-position: 0 top; }
+
+a.button.small, a.button.small:active, a.button.large, a.button.large:active, a.button:active { padding-left: 0; padding-right: 0; }

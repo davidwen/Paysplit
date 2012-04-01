@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:'Paysplit - Splitting expenses made easy' /}
+
+<div id="top-bar">
+  <ul id="top-bar-right">
+    <li><span>${session.username}</span></li>
+    <li><a>Account Settings</a></li>
+    <li><a href="@{Application.index()}">Log Out</a></li>
+  </ul>
+  <ul class="nav">
+    <li><a href="@{Dashboard.dashboard()}">Home (Exit Tutorial)</a></li>
+    <li><a href="@{Tutorial.createExpense()}" class="tutorial-highlight">Submit Expense</a></li>
+    <li><a>Submit Payment</a></li>
+    <li><a>Balances</a></li>
+    <li><a>Transactions</a></li>
+    <li><a>FAQ</a></li>
+  </ul>
+</div>
+
+<div id="wrapper">
+  <header class="tutorial-header">
+    <span>Tutorial</span>
+  </header>
+  <div id="header-bar">
+    <ul class="nav">
+      <li><a href="@{Dashboard.dashboard()}">Home (Exit Tutorial)</a></li>
+      <li><a href="@{Tutorial.createExpense()}" class="tutorial-highlight">Submit Expense</a></li>
+      <li><a>Submit Payment</a></li>
+      <li><a>Balances</a></li>
+      <li><a>Transactions</a></li>
+      <li><a>FAQ</a></li>
+    </ul>
+  </div>
+  
+  <div class="content">
+    <div class="center">
+      <h1>Welcome to the Paysplit tutorial!</h1>
+    </div>
+    <div class="tutorial-intro">
+      <p>
+        We'll walk you through the different things you can do with
+        Paysplit. None of the transactions made during this tutorial
+        are real, so don't be afraid of submitting transactions since
+        they are temporary. If you want to exit the tutorial, click
+        the "Home" link on the top left to return to your dashboard 
+        or the "Log Out" link.
+      </p>
+      <p>
+        Click "Submit Expense" on the top left corner to continue with
+        the tutorial.
+      </p>
+    </div>
+  </div>
+</div>

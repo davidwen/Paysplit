@@ -1,0 +1,37 @@
+#{extends 'main.html' /}
+#{set title:'Paysplit - Splitting expenses made easy' /}
+
+<div class="top-bar">
+  <ul class="top-bar-right">
+    <li>#{a @Application.register(), class:'signup-link'}Sign Up#{/a}</li>
+  </ul>
+</div>
+
+<div class="content">
+  <div class="paysplit-header">Paysplit</div>
+  <div class="paysplit-tagline">Splitting expenses made easy</div>
+
+  #{form @login()}
+    <div class="home-form form-container">
+      <div class="form-section">
+        <div class="form-label-text">Username: </div>
+        <input type="text" class="form-input" name="username">
+      </div>
+      <div class="form-section">
+        <div class="form-label-text">Password: </div>
+        <input type="password" class="form-input" name="password">
+      </div>
+      <div class="form-section">
+        <input type="submit" class="form-submit-button" value="Log In">
+      </div>
+    </div>
+    <div class="home-form-errors">
+      <span class="error">#{error 'username' /}</span>
+      <span class="error">#{error 'password' /}</span>
+    </div>
+  #{/form}
+
+  <div class="home-footer">
+    Take a tour of Paysplit by logging in with username: "tour", password: "tour"
+  </div>
+</div>

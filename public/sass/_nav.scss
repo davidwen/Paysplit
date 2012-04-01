@@ -1,0 +1,96 @@
+.top-bar {
+	background-color: $dark-color;
+	color: $light-color;
+	height: 29px;
+
+	li {
+		float: left;
+		line-height: 19px;
+		margin-top: 3px;
+	}
+
+	a {
+		border: solid 1px #eee;
+		color: $light-color;
+		display: block;
+		margin: 0 2px;
+		padding: 1px 2px;
+		text-decoration: none;
+
+		&:hover {
+			background-color: $light-color;
+			color: $dark-color;
+		}
+	}
+
+	a.signup-link {
+		color: #ff7;
+
+		&:hover {
+			background-color: #ff7;
+			color: $dark-color;
+		}
+	}
+
+	span {
+		display: inline-block;
+		padding: 2px;
+	}
+
+	.nav {
+		@media only screen and (max-width: 768px) {
+			display: none;
+		}
+	}
+}
+
+.header-bar {
+	background-color: #ccc;
+	border-bottom: 5px solid $dark-color;
+	display: none;
+	font-weight: bold;
+	height: 27px;
+	margin: 0px;
+	text-align: center;
+
+	a {
+		color: #666;
+		display: inline-block;
+		margin: 0 2px;
+		padding: 1px 2px;
+		text-decoration: none;
+
+		&:hover {
+			color: $dark-color;
+		}
+	}
+	
+	li {
+		display: inline;
+		line-height: 25px;
+	}
+
+	@media only screen and (max-width: 768px) {
+		display: block;
+	}
+}
+
+.top-bar-right {
+	float: right;
+	font-size: 12px;
+	list-style-type: none;
+}
+
+header {
+	background: #ccc;
+	border-bottom: solid 5px $dark-color;
+	overflow: hidden;
+	padding: 10px 0;
+	text-align: center;
+}
+
+header span {
+	color: $paysplit-green;
+	font-size: 48px;
+	font-weight: bold;
+}

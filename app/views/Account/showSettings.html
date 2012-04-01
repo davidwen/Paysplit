@@ -1,0 +1,42 @@
+#{extends 'header.html' /}
+#{set title:'Paysplit - Splitting expenses made easy' /}
+#{set headerText:'Account Settings' /}
+
+<div class="account-content">
+  <div class="form-container">
+    #{form @Account.changePassword()}
+      <span class="error">#{error 'password' /}</span>
+      #{if "true".equals(flash.get("passwordConfirmation"))}
+        <span class="success">Password changed successfully!</span>
+      #{/if}
+      <div class="form-section-label">Change Password</div>
+      <div class="form-section">
+        <div class="form-label-text">Enter old password: </div>
+        <input type="password" class="form-input" name="oldPassword">
+      </div>
+      <div class="form-section">
+        <div class="form-label-text">Enter new password: </div>
+        <input type="password" class="form-input" name="newPassword">
+      </div>
+      <input type="submit" class="form-submit-button" value="Change Password">
+    #{/form}
+  </div>
+  <div class="form-container">
+    #{form @Account.changeEmail()}
+      <span class="error">#{error 'email' /}</span>
+      #{if "true".equals(flash.get("emailConfirmation"))}
+        <span class="success">Email address changed successfully!</span>
+      #{/if}
+      <div class="form-section-label">Change Email Address</div>
+      <div class="form-section">
+        <div class="form-label-text">Old email address: </div>
+        <div>${user.emailAddress}</div>
+      </div>
+      <div class="form-section">
+        <div class="form-label-text">New email address: </div>
+        <input type="text" class="form-input" name="newEmail">
+      </div>
+      <input type="submit" class="form-submit-button" value="Change E-mail Address">
+    #{/form}
+  </div>
+</div>

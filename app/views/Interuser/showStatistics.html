@@ -1,0 +1,70 @@
+#{extends 'main' /}
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_page.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/datatables/media/css/demo_table_jui.css'}">
+#{/set}
+#{set 'moreScripts'}
+ <script src="@{'/public/datatables/media/js/jquery.dataTables.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+<div class="center">
+  <h3>
+    #{if balance.balance > 0}
+      ${fromUser.username} owes ${toUser.username} $${balance.balance.format("0.00")}
+    #{/if}
+    #{elseif balance.balance < 0}
+      ${toUser.username} owes ${fromUser.username} $${(-1 * balance.balance).format("0.00")}
+    #{/elseif}
+    #{else}
+      No outstanding balance between ${fromUser.username} and ${toUser.username}
+    #{/else}
+  </h3>
+</div>
+<div>
+  <span style="font-weight: bold">Recent Transactions</span>
+  <table id="interuser-transactions-table" class="datatable">
+    <thead>
+      <tr>
+        <td>Type</td>
+        <td>Description</td>
+        <td>From</td>
+        <td>To</td>
+        <td>Amount</td>
+        <td>Date</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<script>
+$(document).ready(function() {
+	$('#interuser-transactions-table').dataTable({
+		"bJQueryUI" : true,
+		"bFilter" : false,
+		"bDestroy" : true,
+		"bSort" : false,
+	    "sAjaxSource": "@{listInteruserTransactionsDataTable()}",
+	    "bServerSide": true,
+	    "aaSorting" : [[4,'desc']],
+	    "fnServerData": function(source, params, callback) {
+	    	params.push({name: 'fromUsername', value: '${fromUser.username}' });
+			params.push({name: 'toUsername', value: '${toUser.username}' });
+	    	$.getJSON(source, params, function(json) {
+	    		callback(json);
+	        });
+	    },
+	    "aoColumns": [
+          { "sWidth": "10%" },
+          { "sWidth": "30%" },
+          { "sWidth": "15%" },
+          { "sWidth": "15%" },
+          { "sWidth": "10%" },
+          { "sWidth": "20%" }
+        ],
+		"oLanguage" : {
+			"sEmptyTable" : "No transactions"
+		}
+	});	
+});
+</script>

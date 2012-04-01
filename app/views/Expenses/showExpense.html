@@ -1,0 +1,57 @@
+#{extends 'header.html' /}
+#{set title:'Paysplit - Splitting expenses made easy' /}
+#{set headerText:'Expense Details' /}
+
+<div class="content">
+  <div id="show-expense-info" class="centered">
+    <table class="displaytable">
+      <tbody>
+        <tr>
+          <td>Description:</td>
+          <td>${expense.description}</td>
+        </tr>
+        <tr>
+          <td>Amount:</td>
+          <td>$${expense.amount.format("0.00")}</td>
+        </tr>
+        <tr>
+          <td>Paid By:</td>
+          <td><a href="@{Users.showUser(expense.user.id)}">${expense.user.username}</a></td>
+        </tr>
+        <tr>
+          <td>Date:</td>
+          <td>${expense.addDate.format("MM/dd/yyyy hh:mm a")}</td>
+        </tr>
+        #{if expense.lastModifiedDate != null}
+        <tr>
+          <td>Last Modified Date:</td>
+          <td>${expense.lastModifiedDate.format("MM/dd/yyyy hh:mm a")}</td>
+        </tr>
+        #{/if}
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="center">
+    <h3>Dues From Expense</h3>
+  </div>
+  
+  <div id="show-expense-dues" class="centered">
+    <table class="displaytable">
+      <thead>
+        <tr>
+          <td>User</td>
+          <td>Amount</td>
+        </tr>
+      </thead>
+      <tbody>
+        #{list items:expense.dues, as:'due'}
+        <tr>
+          <td><a href="@{Users.showUser(due.fromUser.id)}">${due.fromUser.username}</a></td>
+          <td>$${due.amount.format("0.00")}</td>
+        </tr>
+        #{/list}
+      </tbody>
+    </table>
+  </div>
+</div>
