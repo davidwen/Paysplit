@@ -2,99 +2,97 @@
 #{set title:'Paysplit - Splitting expenses made easy' /}
 #{set headerText:'FAQ' /}
 
-<div class="content">
-  <div id="faq-container" class="centered">
-    <section>
-      <h1>What is Paysplit?</h1>
-      <p>
-        Paysplit is a site designed to help you and your peers manage
-        expenses together. Paysplit makes it easier for people to share
-        expenses with others and keep track of who owes who what.
-      </p>
-    </section>
-    <section>
-      <h1>What isn't Paysplit?</h1>
-      <p>
-        Paysplit does not do any actual transactions for you. It is 
-        only a reporting service that makes it easier to track how 
-        much you owe and how much is owed to you. If you report a 
-        payment to someone on Paysplit, don't forgot to actually 
-        make the payment!</p>
-    </section>
-    <section>
-      <h1>How does Paysplit work?</h1>
-      <p>
-        Users can submit three types of transactions: <b>Expenses</b>,
-        <b>Dues</b>, and <b>Payments</b>.
-      </p>
-      <ul class="indented">
-        <li>
-          An <b>Expense</b> is a transaction that users make that they
-          want to share with others. For example, if a user took the 
-          bill for a $40 group dinner and wants to share the expense 
-          with the other diners, that user would want to submit a $40
-          <b>Expense</b>.
-        </li>
-        <br />
-        <li>
-          A <b>Due</b> is a transaction that represents an amount that 
-          one user owes to another. <b>Dues</b> are created from
-          <b>Expenses</b>. When a user creates an <b>Expense</b>, he
-          also creates <b>Dues</b> for each person that owes money as a
-          result of the <b>Expense</b>. For example, if the dinner
-          payer from earlier wants to share the $40 dinner with three 
-          friends, he would create three <b>Dues</b> of $10 from his 
-          friends to him. 
-        </li>
-        <br />
-        <li>
-          A <b>Payment</b> is a transaction from one user to another
-          user. <b>Payments</b> will usually be submitted to pay off
-          debts. For example, after the $10 <b>Due</b> was created
-          earlier, the borrower may submit a $10 <b>Payment</b> to the
-          dinner payer after the borrower's share of the dinner is paid
-          back.
-        </li>
-      </ul>
-      <p>
-        <b>Expenses</b> and <b>Dues</b> are submitted together in the
-        <a href="@{Expenses.showExpenses()}">Submit Expense</a>
-        link in the top bar. <b>Payments</b> are submitted in the 
-        <a href="@{Payments.showPayments()}">Submit Payment</a>
-        link in the top bar. To see a history of transactions that you
-        were involved in, go to the
-        <a href="@{Transactions.showTransactions()}">Transactions</a>
-        link in the top bar.
-      </p>
-    </section>
-    <section>
-      <h1>How do I check how much I owe to others?</h1>
-      <p>
-        Paysplit keeps track of <b>Balances</b> between each user.
-        A <b>Balance</b> simply represents how much someone owes
-        to another. As transactions are submitted, Paysplit updates
-        <b>Balances</b> so users can keep track of how much they owe
-        to others and how much others owe to them. <b>Balances</b> can
-        be checked in the
-        <a href="@{Balances.showBalances()}">Balances</a>
-        link in the top bar.
-      </p>
-    </section>
-    <section>
-      <h1>What? I still don't get it.</h1>
-      <p>
-        If you're still a little confused, take the tutorial and we'll
-        walk you through creating <b>Expenses</b>, <b>Dues</b>, and
-        <b>Payments</b>.
-      </p>
-      <p><a href="@{Tutorial.start()}">Start the tutorial!</a></p>
-    </section>
-    <section>
-      <h1>I still have questions that aren't answered here.</h1>
-      <p>
-        Feel free to send any questions/feedback you have over to
-        paysplithelp@gmail.com.
-      </p>
-    </section>
-  </div>
+<div class="faq-content">
+  <section>
+    <h1>What is Paysplit?</h1>
+    <p>
+      Paysplit is a site designed to help you and your peers manage
+      expenses together. Paysplit makes it easier for people to share
+      expenses with others and keep track of who owes who what.
+    </p>
+  </section>
+  <section>
+    <h1>What isn't Paysplit?</h1>
+    <p>
+      Paysplit does not do any actual transactions for you. It is 
+      only a reporting service that makes it easier to track how 
+      much you owe and how much is owed to you. If you report a 
+      payment to someone on Paysplit, don't forgot to actually 
+      make the payment!</p>
+  </section>
+  <section>
+    <h1>How does Paysplit work?</h1>
+    <p>
+      Users can submit three types of transactions: <b>Expenses</b>,
+      <b>Dues</b>, and <b>Payments</b>.
+    </p>
+    <ul class="indented">
+      <li>
+        An <b>Expense</b> is a transaction that users make that they
+        want to share with others. For example, if a user took the 
+        bill for a $40 group dinner and wants to share the expense 
+        with the other diners, that user would want to submit a $40
+        <b>Expense</b>.
+      </li>
+      <br />
+      <li>
+        A <b>Due</b> is a transaction that represents an amount that 
+        one user owes to another. <b>Dues</b> are created from
+        <b>Expenses</b>. When a user creates an <b>Expense</b>, he
+        also creates <b>Dues</b> for each person that owes money as a
+        result of the <b>Expense</b>. For example, if the dinner
+        payer from earlier wants to share the $40 dinner with three 
+        friends, he would create three <b>Dues</b> of $10 from his 
+        friends to him. 
+      </li>
+      <br />
+      <li>
+        A <b>Payment</b> is a transaction from one user to another
+        user. <b>Payments</b> will usually be submitted to pay off
+        debts. For example, after the $10 <b>Due</b> was created
+        earlier, the borrower may submit a $10 <b>Payment</b> to the
+        dinner payer after the borrower's share of the dinner is paid
+        back.
+      </li>
+    </ul>
+    <p>
+      <b>Expenses</b> and <b>Dues</b> are submitted together in the
+      <a href="@{Expenses.showExpenses()}">Submit Expense</a>
+      link in the top bar. <b>Payments</b> are submitted in the 
+      <a href="@{Payments.showPayments()}">Submit Payment</a>
+      link in the top bar. To see a history of transactions that you
+      were involved in, go to the
+      <a href="@{Transactions.showTransactions()}">Transactions</a>
+      link in the top bar.
+    </p>
+  </section>
+  <section>
+    <h1>How do I check how much I owe to others?</h1>
+    <p>
+      Paysplit keeps track of <b>Balances</b> between each user.
+      A <b>Balance</b> simply represents how much someone owes
+      to another. As transactions are submitted, Paysplit updates
+      <b>Balances</b> so users can keep track of how much they owe
+      to others and how much others owe to them. <b>Balances</b> can
+      be checked in the
+      <a href="@{Balances.showBalances()}">Balances</a>
+      link in the top bar.
+    </p>
+  </section>
+  <section>
+    <h1>What? I still don't get it.</h1>
+    <p>
+      If you're still a little confused, take the tutorial and we'll
+      walk you through creating <b>Expenses</b>, <b>Dues</b>, and
+      <b>Payments</b>.
+    </p>
+    #{a @Tutorial.start(), class:'tutorial-start-button'}Start the tutorial!#{/a}
+  </section>
+  <section>
+    <h1>I still have questions that aren't answered here.</h1>
+    <p>
+      Feel free to send any questions/feedback you have over to
+      paysplithelp@gmail.com.
+    </p>
+  </section>
 </div>

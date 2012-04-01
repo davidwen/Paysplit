@@ -1,0 +1,13 @@
+.show-expense-content {
+	@extend .content;
+	min-width: 300px;
+	width: 50%;
+}
+
+.expense-dues-header {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}

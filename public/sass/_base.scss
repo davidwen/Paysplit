@@ -1,6 +1,7 @@
 $dark-color		: #222;
 $light-color	: #ddd;
 $paysplit-green	: #008000;
+$tutorial-color	: #ffa;
 
 @import "compass/reset";
 
@@ -9,6 +10,7 @@ body {
 	color: #666;
 	font-size: 13px;
 	font-family: sans-serif;
+	line-height: 1.231;
 }
 
 .content {
@@ -30,6 +32,10 @@ body {
 	font-weight: bold;
 }
 
+ul.indented {
+	padding: 0 0 0 40px;
+}
+
 @mixin _centered {
 	margin-left: auto;
 	margin-right: auto;
@@ -40,4 +46,8 @@ body {
 	font-weight: bold;
 	text-align: center;
 	margin-bottom: 15px;
+}
+
+.secondary-header {
+	@include _secondary-header;
 }

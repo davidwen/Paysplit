@@ -1,0 +1,30 @@
+.faq-content {
+	@extend .content;
+	max-width: 800px;
+
+	h1 {
+		color: $paysplit-green;
+		font-size: 20px;
+		font-weight: bold;
+		margin-top: 13px;
+		margin-bottom: 13px;
+	}
+
+	ul {
+		list-style: disc;
+		margin-top: 13px;
+		margin-bottom: 13px;
+	}
+
+	b {
+		font-weight: bold;
+	}
+}
+
+.tutorial-start-button {
+	@extend .button;
+	background-color: $button-orange;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 200px;
+}

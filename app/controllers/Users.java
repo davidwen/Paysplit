@@ -9,7 +9,7 @@ public class Users extends Controller{
         User user = User.findById(userId);
         User currentUser = User.fromSession(session);
         if (user.id == currentUser.id) {
-            Account.showSettings(0);
+            Account.showSettings();
         } else {
             render(user);
         }

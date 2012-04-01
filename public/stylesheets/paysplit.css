@@ -63,39 +63,53 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 7, ../sass/_base.scss */
+/* line 8, ../sass/_base.scss */
 body {
   background-color: #ddd;
   color: #666;
   font-size: 13px;
   font-family: sans-serif;
+  line-height: 1.231;
 }
 
-/* line 14, ../sass/_base.scss */
-.content, .dashboard-content, .account-content, .submit-expense-content, .create-payment-content, .transactions-content {
+/* line 16, ../sass/_base.scss */
+.content, .dashboard-content, .account-content, .submit-expense-content, .create-payment-content, .transactions-content, .faq-content, .show-expense-content {
   margin: 10px auto;
   width: 94%;
 }
 
-/* line 19, ../sass/_base.scss */
+/* line 21, ../sass/_base.scss */
 .clear {
   clear: both;
 }
 
-/* line 23, ../sass/_base.scss */
+/* line 25, ../sass/_base.scss */
 .error {
   color: #C00000;
   font-weight: bold;
 }
 
-/* line 28, ../sass/_base.scss */
+/* line 30, ../sass/_base.scss */
 .success {
   color: #668014;
   font-weight: bold;
 }
 
+/* line 35, ../sass/_base.scss */
+ul.indented {
+  padding: 0 0 0 40px;
+}
+
+/* line 51, ../sass/_base.scss */
+.secondary-header {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 /* line 8, ../sass/_buttons.scss */
-.button, .form-submit-button, .submit-expense-submit-button, .search-form-submit-button {
+.button, .form-submit-button, .submit-expense-submit-button, .search-form-submit-button, .tutorial-start-button {
   padding: 5px 10px;
   display: inline;
   background: #777777 url(/public/images/button.png) repeat-x bottom;
@@ -109,11 +123,11 @@ body {
   text-shadow: 1px 1px #666;
 }
 /* line 21, ../sass/_buttons.scss */
-.button:hover, .form-submit-button:hover, .submit-expense-submit-button:hover, .search-form-submit-button:hover {
+.button:hover, .form-submit-button:hover, .submit-expense-submit-button:hover, .search-form-submit-button:hover, .tutorial-start-button:hover {
   background-position: 0 center;
 }
 /* line 25, ../sass/_buttons.scss */
-.button:active, .form-submit-button:active, .submit-expense-submit-button:active, .search-form-submit-button:active {
+.button:active, .form-submit-button:active, .submit-expense-submit-button:active, .search-form-submit-button:active, .tutorial-start-button:active {
   background-position: 0 top;
   padding: 6px 10px 4px;
   position: relative;
@@ -121,50 +135,50 @@ body {
 }
 
 /* line 33, ../sass/_buttons.scss */
-a.button, a.form-submit-button, a.submit-expense-submit-button, a.search-form-submit-button {
+a.button, a.form-submit-button, a.submit-expense-submit-button, a.search-form-submit-button, a.tutorial-start-button {
   display: block;
   padding: 0;
   text-align: center;
   text-decoration: none;
 }
 /* line 39, ../sass/_buttons.scss */
-a.button:hover, a.form-submit-button:hover, a.submit-expense-submit-button:hover, a.search-form-submit-button:hover, a.button:visited, a.form-submit-button:visited, a.submit-expense-submit-button:visited, a.search-form-submit-button:visited {
+a.button:hover, a.form-submit-button:hover, a.submit-expense-submit-button:hover, a.search-form-submit-button:hover, a.tutorial-start-button:hover, a.button:visited, a.form-submit-button:visited, a.submit-expense-submit-button:visited, a.search-form-submit-button:visited, a.tutorial-start-button:visited {
   color: #fff;
 }
 
 /* line 44, ../sass/_buttons.scss */
-.button.white, .white.form-submit-button, .white.submit-expense-submit-button, .white.search-form-submit-button {
+.button.white, .white.form-submit-button, .white.submit-expense-submit-button, .white.search-form-submit-button, .white.tutorial-start-button {
   background-color: #fff;
   color: #000;
   text-shadow: 1px 1px #fff;
 }
 
 /* line 45, ../sass/_buttons.scss */
-.button.small, .small.form-submit-button, .small.submit-expense-submit-button, .small.search-form-submit-button {
+.button.small, .small.form-submit-button, .small.submit-expense-submit-button, .small.search-form-submit-button, .small.tutorial-start-button {
   font-size: 75%;
   padding: 3px 7px;
 }
 
 /* line 46, ../sass/_buttons.scss */
-.button.small:active, .small.form-submit-button:active, .small.submit-expense-submit-button:active, .small.search-form-submit-button:active {
+.button.small:active, .small.form-submit-button:active, .small.submit-expense-submit-button:active, .small.search-form-submit-button:active, .small.tutorial-start-button:active {
   padding: 4px 7px 2px;
   background-position: 0 top;
 }
 
 /* line 47, ../sass/_buttons.scss */
-.button.large, .large.form-submit-button, .large.submit-expense-submit-button, .large.search-form-submit-button {
+.button.large, .large.form-submit-button, .large.submit-expense-submit-button, .large.search-form-submit-button, .large.tutorial-start-button {
   font-size: 125%;
   padding: 7px 12px;
 }
 
 /* line 48, ../sass/_buttons.scss */
-.button.large:active, .large.form-submit-button:active, .large.submit-expense-submit-button:active, .large.search-form-submit-button:active {
+.button.large:active, .large.form-submit-button:active, .large.submit-expense-submit-button:active, .large.search-form-submit-button:active, .large.tutorial-start-button:active {
   padding: 8px 12px 6px;
   background-position: 0 top;
 }
 
 /* line 50, ../sass/_buttons.scss */
-a.button.small, a.small.form-submit-button, a.small.submit-expense-submit-button, a.small.search-form-submit-button, a.button.small:active, a.small.form-submit-button:active, a.small.submit-expense-submit-button:active, a.small.search-form-submit-button:active, a.button.large, a.large.form-submit-button, a.large.submit-expense-submit-button, a.large.search-form-submit-button, a.button.large:active, a.large.form-submit-button:active, a.large.submit-expense-submit-button:active, a.large.search-form-submit-button:active, a.button:active, a.form-submit-button:active, a.submit-expense-submit-button:active, a.search-form-submit-button:active {
+a.button.small, a.small.form-submit-button, a.small.submit-expense-submit-button, a.small.search-form-submit-button, a.small.tutorial-start-button, a.button.small:active, a.small.form-submit-button:active, a.small.submit-expense-submit-button:active, a.small.search-form-submit-button:active, a.small.tutorial-start-button:active, a.button.large, a.large.form-submit-button, a.large.submit-expense-submit-button, a.large.search-form-submit-button, a.large.tutorial-start-button, a.button.large:active, a.large.form-submit-button:active, a.large.submit-expense-submit-button:active, a.large.search-form-submit-button:active, a.large.tutorial-start-button:active, a.button:active, a.form-submit-button:active, a.submit-expense-submit-button:active, a.search-form-submit-button:active, a.tutorial-start-button:active {
   padding-left: 0;
   padding-right: 0;
 }
@@ -595,19 +609,11 @@ header span {
 }
 
 /* line 7, ../sass/_create-payment.scss */
-.create-payment-header {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-/* line 11, ../sass/_create-payment.scss */
 .true-payment-from-user-container {
   float: left;
 }
 
-/* line 15, ../sass/_create-payment.scss */
+/* line 11, ../sass/_create-payment.scss */
 .false-payment-from-user-container {
   float: right;
 }
@@ -644,31 +650,99 @@ header span {
 }
 
 /* line 6, ../sass/_transactions.scss */
-.transactions-header {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-/* line 10, ../sass/_transactions.scss */
 .search-form-container {
   margin: 5px;
 }
 
-/* line 14, ../sass/_transactions.scss */
+/* line 10, ../sass/_transactions.scss */
 .search-form-container .ui-widget {
   font-size: 11px;
 }
 
-/* line 18, ../sass/_transactions.scss */
+/* line 14, ../sass/_transactions.scss */
 .search-form-section {
   font-weight: bold;
   margin-left: 5px;
   margin-right: 5px;
 }
 
-/* line 24, ../sass/_transactions.scss */
+/* line 20, ../sass/_transactions.scss */
 .search-form-submit-button {
   background-color: #58aa00;
+}
+
+/* line 1, ../sass/_faq.scss */
+.faq-content {
+  max-width: 800px;
+}
+/* line 5, ../sass/_faq.scss */
+.faq-content h1 {
+  color: green;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+/* line 13, ../sass/_faq.scss */
+.faq-content ul {
+  list-style: disc;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+/* line 19, ../sass/_faq.scss */
+.faq-content b {
+  font-weight: bold;
+}
+
+/* line 24, ../sass/_faq.scss */
+.tutorial-start-button {
+  background-color: #ff9c00;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+/* line 1, ../sass/_show-expense.scss */
+.show-expense-content {
+  min-width: 300px;
+  width: 50%;
+}
+
+/* line 7, ../sass/_show-expense.scss */
+.expense-dues-header {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* line 1, ../sass/_show-user.scss */
+.user-info {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  width: 300px;
+}
+
+/* line 1, ../sass/_statistics.scss */
+.statistics-header {
+  color: green;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* line 9, ../sass/_statistics.scss */
+.statistics-table-container {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  width: 70%;
+}
+
+/* line 15, ../sass/_statistics.scss */
+.statistics-table-header {
+  font-weight: bold;
 }
