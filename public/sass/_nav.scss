@@ -73,6 +73,10 @@
 	@media only screen and (max-width: 768px) {
 		display: block;
 	}
+
+	@media only screen and (max-width: 480px) {
+		font-size: 9px;
+	}
 }
 
 .top-bar-right {
@@ -84,13 +88,14 @@
 header {
 	background: #ccc;
 	border-bottom: solid 5px $dark-color;
-	overflow: hidden;
-	padding: 10px 0;
-	text-align: center;
-}
-
-header span {
 	color: $paysplit-green;
 	font-size: 48px;
 	font-weight: bold;
+	overflow: hidden;
+	padding: 10px 0;
+	text-align: center;
+
+	@media only screen and (max-width: 480px) {
+		font-size: 36px;
+	}
 }

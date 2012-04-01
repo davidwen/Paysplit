@@ -18,8 +18,8 @@ $pay-text-width: 60px;
 	@include _form-input($expense-form-width);
 }
 
-.submit-expense-submit-button {
-	@include _form-submit-button($expense-form-width);
+.submit-expense-submit {
+	@include _form-submit($expense-form-width);
 }
 
 .submit-expense-enter-expense {

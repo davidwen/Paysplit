@@ -1,6 +1,6 @@
 <ul class="nav">
   <li>
-    #{a @Dashboard.dashboard()}Home#{if mode=="tutorial"} (Exit Tutorial)#{/if}#{/a}
+    #{a @Dashboard.dashboard()}#{if mode=="tutorial"}Exit Tutorial#{/if}#{else}Home#{/else}#{/a}
   </li>
   <li>
     #{if page == 'start'}

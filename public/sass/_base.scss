@@ -3,12 +3,14 @@ $light-color	: #ddd;
 $paysplit-green	: #008000;
 $tutorial-color	: #ffa;
 
+$default-font-size	: 13px;
+
 @import "compass/reset";
 
 body {
 	background-color: #ddd;
 	color: #666;
-	font-size: 13px;
+	font-size: $default-font-size;
 	font-family: sans-serif;
 	line-height: 1.231;
 }

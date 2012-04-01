@@ -1,9 +1,30 @@
 /** Create Payment **/
 
+$create-payment-width	: 540px;
+
+.create-payment-header {
+	@include _secondary-header;
+	font-size: 36px;
+
+	@media only screen and (max-width: 768px) {
+		font-size: 24px;	
+	}
+}
+
 .create-payment-content {
 	@extend .content;
 	@include _centered;
-	width: 300px;
+	font-size: 24px;
+	width: $create-payment-width;
+
+	@media only screen and (max-width: 768px) {
+		font-size: $default-font-size;
+		width: $form-width;
+	}
+}
+
+.from-user-container {
+	margin-bottom: 24px;
 }
 
 .true-payment-from-user-container {
@@ -14,11 +35,46 @@
 	float: right;
 }
 
+.create-payment-form-container {
+	@include _form-container($create-payment-width);
+
+	@media only screen and (max-width: 768px) {
+		@include _form-container($form-width);
+	}
+}
+
+.create-payment-form-section {
+	@include _form-section($create-payment-width);	
+
+	@media only screen and (max-width: 768px) {
+		@include _form-section($form-width);
+	}
+}
+
+.create-payment-form-input {
+	@include _form-input($create-payment-width);
+	font-size: 24px;
+
+	@media only screen and (max-width: 768px) {
+		@include _form-input($form-width);
+		font-size: $default-font-size;
+	}
+}
+
+.create-payment-form-submit {
+	@include _form-submit($create-payment-width);
+	font-size: 24px;
+
+	@media only screen and (max-width: 768px) {
+		@include _form-submit($form-width);
+		font-size: $default-font-size;
+	}
+}
+
 /** Show Payment **/
 
 .show-payment-content {
 	@extend .content;
 	@include _centered;
-	min-width: 300px;
-	width: 50%;
+	width: 100%;
 }

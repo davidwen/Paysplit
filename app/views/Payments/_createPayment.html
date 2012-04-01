@@ -48,37 +48,39 @@
 <div class="create-payment-content">
   #{form @Payments.submitPayment()}
     <input type="hidden" name="userId" value="${session.userId}">
-      <div class="secondary-header">Enter Payment</div>
-      <div class="form-container">
-        <div class="true-payment-from-user-container">
-          <input id="true-payment-from-user" type="radio" name="paymentFromUser" value="true" #{if flash.paymentFromUser != false}checked#{/if}>
-          <label for="true-payment-from-user">Payment is from you</label>
+      <div class="create-payment-header">Enter Payment</div>
+      <div class="create-payment-form-container">
+        <div class="from-user-container">
+          <div class="true-payment-from-user-container">
+            <input id="true-payment-from-user" type="radio" name="paymentFromUser" value="true" #{if flash.paymentFromUser != false}checked#{/if}>
+            <label for="true-payment-from-user">Payment is from you</label>
+          </div>
+          <div class="false-payment-from-user-container">
+            <input id="false-payment-from-user" type="radio" name="paymentFromUser" value="false" #{if flash.paymentFromUser == false}checked#{/if}>
+            <label for="false-payment-from-user">Payment is to you</label>
+          </div>
+          <div class="clear"></div>
         </div>
-        <div class="false-payment-from-user-container">
-          <input id="false-payment-from-user" type="radio" name="paymentFromUser" value="false" #{if flash.paymentFromUser == false}checked#{/if}>
-          <label for="false-payment-from-user">Payment is to you</label>
-        </div>
-        <div class="clear"></div>
-        <div class="form-section">
+        <div class="create-payment-form-section">
           <div><span id="username-header" class="form-label-text"></span></div>
           <div class="error">#{error 'username' /}</div>
-          <input type="text" class="form-input" name="username" id="username" value="${flash.username}">
+          <input type="text" class="create-payment-form-input" name="username" id="username" value="${flash.username}">
         </div>
-        <div class="form-section">
+        <div class="create-payment-form-section">
           <div class="form-label-text">Amount ($):</div>
           <div class="error">#{error 'amount' /}</div>
-          <input type="text" class="form-input" name="amount" value="${flash.amount}">
+          <input type="text" class="create-payment-form-input" name="amount" value="${flash.amount}">
         </div>
-        <div class="form-section">
+        <div class="create-payment-form-section">
           <div class="form-label-text">Description: </div>
-          <input type="text" class="form-input" name="description" value="${flash.description}">
+          <input type="text" class="create-payment-form-input" name="description" value="${flash.description}">
         </div>
-        <div class="form-section">
+        <div class="create-payment-form-section">
           #{if mode == "tutorial"}
-            #{a @Dashboard.dashboard(), class:'form-submit-button'}Submit Payment#{/a}
+            #{a @Dashboard.dashboard(), class:'create-payment-form-submit-button'}Submit Payment#{/a}
           #{/if}
           #{else}
-            <input type="submit" class="form-submit-button" value="Submit Payment">
+            <input type="submit" class="create-payment-form-submit button" value="Submit Payment">
           #{/else}
         </div>
       </div>

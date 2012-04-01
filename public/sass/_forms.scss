@@ -9,23 +9,34 @@ $form-width: 300px;
 	margin-bottom: 25px;
 }
 
-@mixin _form-input($width) {
-	width: $width - 6px;
-}
-
-@mixin _form-submit-button($width) {
-	@extend .button;
-	background-color: $button-green;
-	width: $width;
-}
-
 .form-container {
 	@include _form-container($form-width);
 }
 
+@mixin _form-input($width) {
+	width: $width - 6px;
+}
+
+.form-input {
+	@include _form-input($form-width);
+}
+
+@mixin _form-submit($width) {
+	background-color: $button-green;
+	width: $width;
+}
+
+.form-submit {
+	@include _form-submit($form-width);
+}
+
+@mixin _form-section($width) {
+	margin-top: $width / 100;
+	margin-bottom: $width / 30;
+}
+
 .form-section {
-	margin-top: 3px;
-	margin-bottom: 10px;
+	@include _form-section($form-width);
 }
 
 .form-section-label {
@@ -38,12 +49,4 @@ $form-width: 300px;
 
 .form-label-text {
 	font-weight: bold;
-}
-
-.form-input {
-	@include _form-input($form-width);
-}
-
-.form-submit-button {
-	@include _form-submit-button($form-width);
 }
