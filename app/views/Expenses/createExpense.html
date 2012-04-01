@@ -19,11 +19,11 @@
         <div class="error">#{error 'amount' /}</div>
         <div class="form-section">
           <div>Amount ($): </div>
-          <input type="text" id="expenseAmount" name="amount" class="submit-expense-form-input">
+          <input type="text" id="expenseAmount" name="amount" class="submit-expense-form-input" value="${flash.amount}">
         </div>
         <div class="form-section">
           <div>Description: </div>
-          <input type="text" name="description" class="submit-expense-form-input">
+          <input type="text" name="description" class="submit-expense-form-input" value="${flash.description}">
         </div>
       </div>
     </div>
