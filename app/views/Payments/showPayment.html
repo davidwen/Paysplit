@@ -2,37 +2,35 @@
 #{set title:'Paysplit - Splitting expenses made easy' /}
 #{set headerText:'Payment Details' /}
 
-<div id="content">
-  <div class="displaytable-container">
-    <table class="displaytable">
-      <tbody>
-        <tr>
-          <td>Description:</td>
-          <td>${payment.description}</td>
-        </tr>
-        <tr>
-          <td>Amount:</td>
-          <td>$${payment.amount.format("0.00")}</td>
-        </tr>
-        <tr>
-          <td>Paid By:</td>
-          <td><a href="@{Users.showUser(payment.fromUser.id)}">${payment.fromUser.username}</a></td>
-        </tr>
-        <tr>
-          <td>Paid To:</td>
-          <td><a href="@{Users.showUser(payment.toUser.id)}">${payment.toUser.username}</a></td>
-        </tr>
-        <tr>
-          <td>Date:</td>
-          <td>${payment.addDate.format("MM/dd/yyyy hh:mm a")}</td>
-        </tr>
-        #{if payment.lastModifiedDate != null}
-        <tr>
-          <td>Last Modified Date:</td>
-          <td>${payment.lastModifiedDate.format("MM/dd/yyyy hh:mm a")}</td>
-        </tr>
-        #{/if}
-      </tbody>
-    </table>
-  </div>
+<div class="show-payment-content">
+  <table class="displaytable">
+    <tbody>
+      <tr>
+        <td>Description:</td>
+        <td>${payment.description}</td>
+      </tr>
+      <tr>
+        <td>Amount:</td>
+        <td>$${payment.amount.format("0.00")}</td>
+      </tr>
+      <tr>
+        <td>Paid By:</td>
+        <td>#{a @Users.showUser(payment.fromUser.id)}${payment.fromUser.username}#{/a}</td>
+      </tr>
+      <tr>
+        <td>Paid To:</td>
+        <td>#{a @Users.showUser(payment.toUser.id)}${payment.toUser.username}#{/a}</td>
+      </tr>
+      <tr>
+        <td>Date:</td>
+        <td>${payment.addDate.format("MM/dd/yyyy hh:mm a")}</td>
+      </tr>
+      #{if payment.lastModifiedDate != null}
+      <tr>
+        <td>Last Modified Date:</td>
+        <td>${payment.lastModifiedDate.format("MM/dd/yyyy hh:mm a")}</td>
+      </tr>
+      #{/if}
+    </tbody>
+  </table>
 </div>

@@ -73,7 +73,7 @@ body {
 }
 
 /* line 16, ../sass/_base.scss */
-.content, .dashboard-content, .account-content, .submit-expense-content, .create-payment-content, .transactions-content, .faq-content, .show-expense-content {
+.content, .dashboard-content, .account-content, .submit-expense-content, .create-payment-content, .show-payment-content, .transactions-content, .faq-content, .show-expense-content {
   margin: 10px auto;
   width: 94%;
 }
@@ -601,21 +601,31 @@ header span {
   width: 60px;
 }
 
-/* line 1, ../sass/_create-payment.scss */
+/** Create Payment **/
+/* line 3, ../sass/_create-payment.scss */
 .create-payment-content {
   margin-left: auto;
   margin-right: auto;
   width: 300px;
 }
 
-/* line 7, ../sass/_create-payment.scss */
+/* line 9, ../sass/_create-payment.scss */
 .true-payment-from-user-container {
   float: left;
 }
 
-/* line 11, ../sass/_create-payment.scss */
+/* line 13, ../sass/_create-payment.scss */
 .false-payment-from-user-container {
   float: right;
+}
+
+/** Show Payment **/
+/* line 19, ../sass/_create-payment.scss */
+.show-payment-content {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  width: 50%;
 }
 
 /* line 1, ../sass/_show-balances.scss */
@@ -718,7 +728,7 @@ header span {
 }
 
 /* line 1, ../sass/_show-user.scss */
-.user-info {
+.show-user-info {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;

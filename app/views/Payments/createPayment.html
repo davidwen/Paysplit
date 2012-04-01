@@ -24,27 +24,27 @@
       <div class="secondary-header">Enter Payment</div>
       <div class="form-container">
         <div class="true-payment-from-user-container">
-          <input id="true-payment-from-user" type="radio" name="paymentFromUser" value="true" checked>
+          <input id="true-payment-from-user" type="radio" name="paymentFromUser" value="true" #{if flash.paymentFromUser != false}checked#{/if}>
           <label for="true-payment-from-user">Payment is from you</label>
         </div>
         <div class="false-payment-from-user-container">
-          <input id="false-payment-from-user" type="radio" name="paymentFromUser" value="false">
+          <input id="false-payment-from-user" type="radio" name="paymentFromUser" value="false" #{if flash.paymentFromUser == false}checked#{/if}>
           <label for="false-payment-from-user">Payment is to you</label>
         </div>
         <div class="clear"></div>
         <div class="form-section">
           <div><span id="username-header" class="form-label-text"></span></div>
           <div class="error">#{error 'username' /}</div>
-          <input type="text" class="form-input" name="username" id="username">
+          <input type="text" class="form-input" name="username" id="username" value="${flash.username}">
         </div>
         <div class="form-section">
           <div class="form-label-text">Amount ($):</div>
           <div class="error">#{error 'amount' /}</div>
-          <input type="text" class="form-input" name="amount">
+          <input type="text" class="form-input" name="amount" value="${flash.amount}">
         </div>
         <div class="form-section">
           <div class="form-label-text">Description: </div>
-          <input type="text" class="form-input" name="description">
+          <input type="text" class="form-input" name="description" value="${flash.description}">
         </div>
         <div class="form-section">
           <input type="submit" class="form-submit-button" value="Submit Payment">

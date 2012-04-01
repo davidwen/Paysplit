@@ -18,13 +18,19 @@ public class Payments extends Controller{
     }
 
     public static void submitPayment(
-            String toUsername,
-            double amount,
-            String description)
+        String username,
+        double amount,
+        String description,
+        Boolean paymentFromUser)
     {
         User user = User.fromSession(session);
+        User otherUser = null;
+
         if (User.isTour(user)) {
-            validation.addError("amount", "Cannot create payments on the tour account. Log out and create your own account!");
+            validation.addError(
+                "amount",
+                "Cannot create payments on the tour account. Log out and " +
+                    "create your own account.");
         }
 
         if (Strings.isNullOrEmpty(description)) {
@@ -32,18 +38,16 @@ public class Payments extends Controller{
         }
         description = StringUtil.normalizeWhitespace(description);
 
-        Payment payment = new Payment();
-        payment.fromUser = user;
-        payment.addDate = new Date();
-        payment.description = description;
-
         /* Username validation */
         try {
-            payment.toUser = User.fromUsername(toUsername);
+
+            otherUser = User.fromUsername(username);
         } catch (EntityNotFoundException e) {
-            validation.addError("username", "Invalid username: " + toUsername);
+
+            validation.addError("username", "Invalid username: " + username);
         }
-        if (user.username.equals(toUsername)) {
+
+        if (user.username.equals(username)) {
             validation.addError("username", "Cannot make payment to yourself");
         }
 
@@ -51,9 +55,21 @@ public class Payments extends Controller{
         if (amount <= 0) {
             validation.addError("amount", "Payment amount must be positive");
         }
-        payment.amount = amount;
 
         checkErrors();
+
+        Payment payment = new Payment();
+        if (paymentFromUser) {
+            payment.fromUser = user;
+            payment.toUser = otherUser;
+        } else {
+            payment.fromUser = otherUser;
+            payment.toUser = user;
+        }
+        payment.addDate = new Date();
+        payment.description = description;
+        payment.amount = amount;
+
         Payment.savePayment(payment);
         Transactions.showTransactions();
     }

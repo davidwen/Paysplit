@@ -1,3 +1,5 @@
+/** Create Payment **/
+
 .create-payment-content {
 	@extend .content;
 	@include _centered;
@@ -10,4 +12,13 @@
 
 .false-payment-from-user-container {
 	float: right;
+}
+
+/** Show Payment **/
+
+.show-payment-content {
+	@extend .content;
+	@include _centered;
+	min-width: 300px;
+	width: 50%;
 }
