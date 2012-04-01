@@ -1,0 +1,6 @@
+.tutorial-info {
+	@include _centered;
+	background-color: $tutorial-color;
+	border-bottom: 5px solid $dark-color;
+	padding: 10px 20%;
+}

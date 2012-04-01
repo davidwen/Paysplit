@@ -758,3 +758,12 @@ header span {
 .statistics-table-header {
   font-weight: bold;
 }
+
+/* line 1, ../sass/_tutorial.scss */
+.tutorial-info {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffaa;
+  border-bottom: 5px solid #222222;
+  padding: 10px 20%;
+}
