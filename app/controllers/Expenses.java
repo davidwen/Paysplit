@@ -1,5 +1,6 @@
 package controllers;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -59,8 +60,8 @@ public class Expenses extends Controller {
         expense.save();
 
         int iteration = 1;
-        double totalDues = Double.parseDouble(params.get(dueAmount + "0"));
-        if (totalDues < 0) {
+        BigDecimal totalDues = new BigDecimal(params.get(dueAmount + "0"));
+        if (totalDues.compareTo(BigDecimal.ZERO) < 0) {
             validation.addError("due", "Created dues amount exceeds expense amount");
         }
         checkErrorsWithRollback();
@@ -103,12 +104,12 @@ public class Expenses extends Controller {
                 validation.addError("due", "Due amount must be positive");
             }
 
-            totalDues += due.amount;
+            totalDues = totalDues.add(new BigDecimal(amountString));
             checkErrorsWithRollback();
             Due.saveDue(due);
             iteration++;
         }
-        if (totalDues != expense.amount) {
+        if (totalDues.doubleValue() != expense.amount) {
             validation.addError("due", "Sum of due amounts do not equal expense amount");
         }
         checkErrorsWithRollback();
