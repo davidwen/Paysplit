@@ -58,3 +58,7 @@ ul.indented {
 .secondary-header {
 	@include _secondary-header;
 }
+
+a {
+	text-decoration: none;
+}

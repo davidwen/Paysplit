@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import models.Balance;
 import models.Due;
 import models.Expense;
 import models.User;
@@ -125,7 +126,27 @@ public class Expenses extends Controller {
     public static void showExpense(long expenseId) {
         User user = User.fromSession(session);
         Expense expense = Expense.findById(expenseId);
-        render(user, expense);
+        if (expense == null) {
+            notFound();
+        }
+        boolean isExpenseOwner =
+            expense.user.getId() == user.getId();
+        render(user, expense, isExpenseOwner);
+    }
+
+    public static void deleteExpense(long expenseId) {
+        User user = User.fromSession(session);
+        Expense expense = Expense.findById(expenseId);
+        if (expense.user.getId() != user.getId()) {
+            forbidden();
+        }
+        for (Due due : expense.dues) {
+            Balance.adjustBalance(due.toUser, due.fromUser, due.amount);
+            due.delete();
+        }
+        expense.delete();
+        flash.success("Expense deleted");
+        Transactions.showTransactions();
     }
 
     private static void checkErrorsWithRollback() {

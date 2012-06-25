@@ -16,6 +16,7 @@ $button-black   : #333;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+  text-decoration: none;
   text-shadow: 1px 1px #666;
 
   &:hover {
@@ -41,7 +42,15 @@ a.button {
   }
 }
 
-.button.white { background-color: #fff; color: #000; text-shadow: 1px 1px #fff; }
+.button.white {
+  background-color: #fff;
+  color: #000;
+  text-shadow: 1px 1px #fff;
+}
+
+.button.red {
+  background-color: $button-red;
+}
 .button.small { font-size: 75%; padding: 3px 7px; }
 .button.small:active { padding: 4px 7px 2px; background-position: 0 top; }
 .button.large { font-size: 125%; padding: 7px 12px; }

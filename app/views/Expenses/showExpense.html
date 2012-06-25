@@ -53,4 +53,11 @@
       </tbody>
     </table>
   </div>
+  #{if isExpenseOwner}
+  <div class="delete-expense-container">
+    #{a @Expenses.deleteExpense(expense.id)}
+      <span class="red button">Delete Expense and Associated Dues</span>
+    #{/a}
+  </div>
+  #{/if}
 </div>

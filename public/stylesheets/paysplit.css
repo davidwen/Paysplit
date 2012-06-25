@@ -114,6 +114,11 @@ ul.indented {
   margin-bottom: 15px;
 }
 
+/* line 62, ../sass/_base.scss */
+a {
+  text-decoration: none;
+}
+
 /* line 8, ../sass/_buttons.scss */
 .button, .search-form-submit-button, .tutorial-start-button {
   padding: 5px 10px;
@@ -126,13 +131,14 @@ ul.indented {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+  text-decoration: none;
   text-shadow: 1px 1px #666;
 }
-/* line 21, ../sass/_buttons.scss */
+/* line 22, ../sass/_buttons.scss */
 .button:hover, .search-form-submit-button:hover, .tutorial-start-button:hover {
   background-position: 0 center;
 }
-/* line 25, ../sass/_buttons.scss */
+/* line 26, ../sass/_buttons.scss */
 .button:active, .search-form-submit-button:active, .tutorial-start-button:active {
   background-position: 0 top;
   padding: 6px 10px 4px;
@@ -140,50 +146,55 @@ ul.indented {
   top: 1px;
 }
 
-/* line 33, ../sass/_buttons.scss */
+/* line 34, ../sass/_buttons.scss */
 a.button, a.search-form-submit-button, a.tutorial-start-button {
   display: block;
   padding: 0;
   text-align: center;
   text-decoration: none;
 }
-/* line 39, ../sass/_buttons.scss */
+/* line 40, ../sass/_buttons.scss */
 a.button:hover, a.search-form-submit-button:hover, a.tutorial-start-button:hover, a.button:visited, a.search-form-submit-button:visited, a.tutorial-start-button:visited {
   color: #fff;
 }
 
-/* line 44, ../sass/_buttons.scss */
+/* line 45, ../sass/_buttons.scss */
 .button.white, .white.search-form-submit-button, .white.tutorial-start-button {
   background-color: #fff;
   color: #000;
   text-shadow: 1px 1px #fff;
 }
 
-/* line 45, ../sass/_buttons.scss */
+/* line 51, ../sass/_buttons.scss */
+.button.red, .red.search-form-submit-button, .red.tutorial-start-button {
+  background-color: maroon;
+}
+
+/* line 54, ../sass/_buttons.scss */
 .button.small, .small.search-form-submit-button, .small.tutorial-start-button {
   font-size: 75%;
   padding: 3px 7px;
 }
 
-/* line 46, ../sass/_buttons.scss */
+/* line 55, ../sass/_buttons.scss */
 .button.small:active, .small.search-form-submit-button:active, .small.tutorial-start-button:active {
   padding: 4px 7px 2px;
   background-position: 0 top;
 }
 
-/* line 47, ../sass/_buttons.scss */
+/* line 56, ../sass/_buttons.scss */
 .button.large, .large.search-form-submit-button, .large.tutorial-start-button {
   font-size: 125%;
   padding: 7px 12px;
 }
 
-/* line 48, ../sass/_buttons.scss */
+/* line 57, ../sass/_buttons.scss */
 .button.large:active, .large.search-form-submit-button:active, .large.tutorial-start-button:active {
   padding: 8px 12px 6px;
   background-position: 0 top;
 }
 
-/* line 50, ../sass/_buttons.scss */
+/* line 59, ../sass/_buttons.scss */
 a.button.small, a.small.search-form-submit-button, a.small.tutorial-start-button, a.button.small:active, a.small.search-form-submit-button:active, a.small.tutorial-start-button:active, a.button.large, a.large.search-form-submit-button, a.large.tutorial-start-button, a.button.large:active, a.large.search-form-submit-button:active, a.large.tutorial-start-button:active, a.button:active, a.search-form-submit-button:active, a.tutorial-start-button:active {
   padding-left: 0;
   padding-right: 0;
@@ -630,6 +641,11 @@ header {
   margin-top: 15px;
   margin-bottom: 15px;
   text-align: center;
+}
+
+/* line 102, ../sass/_expenses.scss */
+.delete-expense-container {
+  margin-top: 30px;
 }
 
 /** Create Payment **/
