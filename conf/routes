@@ -6,14 +6,13 @@
 GET     /                                       Application.index
 GET		/register								Application.register
 GET		/dashboard								Dashboard.dashboard
-GET		/users/{userId}/show					Users.showUser
-GET		/expenses/create						Expenses.createExpense
-GET		/expenses/show							Expenses.showExpenses
-GET		/expenses/{expenseId}/show				Expenses.showExpense
-GET		/payments/create						Payments.createPayment
-GET		/payments/show							Payments.showPayments
-GET		/payments/{paymentId}/show				Payments.showPayment
-GET		/balances/show							Balances.showBalances
+GET		/users/{userId}							Users.showUser
+GET		/expenses/new  							Expenses.createExpense
+GET		/expenses/{expenseId}					Expenses.showExpense
+GET		/payments/new							Payments.createPayment
+GET		/payments/{paymentId}					Payments.showPayment
+GET		/balances								Balances.showBalances
+GET		/transactions							Transactions.showTransactions
 GET		/account/settings						Account.showSettings
 
 
