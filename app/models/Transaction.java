@@ -4,8 +4,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
+import play.mvc.Router;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * A transaction is a due or payment between two users.
@@ -125,14 +129,18 @@ public class Transaction {
     }
 
     public static String createUrl(Type type, Long id) {
+        Map<String, Object> args = Maps.newHashMap();
         switch(type){
             case DUE:
                 Due due = Due.findById(id);
-                return "/expenses/" + due.expense.id + "/show";
+                args.put("expenseId", due.expense.id);
+                return Router.reverse("Expenses.showExpense", args).url;
             case PAYMENT:
-                return "/payments/" + id + "/show";
+                args.put("paymentId", id);
+                return Router.reverse("Payments.showPayment", args).url;
             case EXPENSE:
-                return "/expenses/" + id + "/show";
+                args.put("expenseId", id);
+                return Router.reverse("Expenses.showExpense", args).url;
             default:
                 return null;
         }

@@ -9,6 +9,7 @@ GET		/dashboard								Dashboard.dashboard
 GET		/users/{userId}							Users.showUser
 GET		/expenses/new  							Expenses.createExpense
 GET		/expenses/{expenseId}					Expenses.showExpense
+GET		/expenses/{expenseId}/delete			Expenses.deleteExpense
 GET		/payments/new							Payments.createPayment
 GET		/payments/{paymentId}					Payments.showPayment
 GET		/balances								Balances.showBalances
