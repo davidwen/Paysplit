@@ -16,7 +16,7 @@ import play.db.jpa.Model;
  */
 @Entity
 @Table(name="payments")
-public class Payment extends Model{
+public class Payment extends Model {
 
     @ManyToOne
     @JoinColumn(name="fromUser_id", nullable=false)

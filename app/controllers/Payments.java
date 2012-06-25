@@ -11,7 +11,7 @@ import com.google.common.base.Strings;
 
 import exceptions.EntityNotFoundException;
 
-public class Payments extends Controller{
+public class Payments extends Controller {
 
     public static void createPayment() {
         render();
@@ -84,6 +84,12 @@ public class Payments extends Controller{
     public static void showPayment(long paymentId) {
         User user = User.fromSession(session);
         Payment payment = Payment.findById(paymentId);
+        if (payment == null) {
+            notFound();
+        }
+        if (payment.fromUser.id != user.id && payment.toUser.id != user.id) {
+            forbidden();
+        }
         render(user, payment);
     }
 

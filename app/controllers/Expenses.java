@@ -130,14 +130,14 @@ public class Expenses extends Controller {
             notFound();
         }
         boolean isExpenseOwner =
-            expense.user.getId() == user.getId();
+            expense.user.id == user.id;
         render(user, expense, isExpenseOwner);
     }
 
     public static void deleteExpense(long expenseId) {
         User user = User.fromSession(session);
         Expense expense = Expense.findById(expenseId);
-        if (expense.user.getId() != user.getId()) {
+        if (expense.user.id != user.id) {
             forbidden();
         }
         for (Due due : expense.dues) {

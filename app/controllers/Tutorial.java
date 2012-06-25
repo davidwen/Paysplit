@@ -23,7 +23,7 @@ import com.google.common.collect.Sets;
  * Controller for driving the tutorial
  * @author davidwen
  */
-public class Tutorial extends Controller{
+public class Tutorial extends Controller {
 
     private static String dueUsername = "dueUsername";
     private static String dueAmount = "dueAmount";

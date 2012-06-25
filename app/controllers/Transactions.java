@@ -8,7 +8,7 @@ import play.mvc.Controller;
 
 import com.google.common.collect.Lists;
 
-public class Transactions extends Controller{
+public class Transactions extends Controller {
 
     public static void showTransactions() {
         User user = User.fromSession(session);
