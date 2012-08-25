@@ -76,7 +76,7 @@ public class Expenses extends Controller {
         checkErrorsWithRollback();
         Set<String> dueUsernames = Sets.newHashSet();
 
-        Set<String> emails = Sets.newHashSet(expenseUser.email, user.email);
+        Set<String> emails = Sets.newHashSet(expenseUser.emailAddress, user.emailAddress);
         List<Due> dues = Lists.newArrayList();
         while(params.get(dueUsername + String.valueOf(iteration)) != null) {
             String fromUsername = params.get(dueUsername + String.valueOf(iteration));
@@ -119,7 +119,7 @@ public class Expenses extends Controller {
             checkErrorsWithRollback();
             Due.saveDue(due);
             dues.add(due);
-            emails.add(due.fromUser.email);
+            emails.add(due.fromUser.emailAddress);
             iteration++;
         }
         if (totalDues.doubleValue() != expense.amount) {
