@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import helpers.Emailer;
 import models.Balance;
 import models.Due;
 import models.Expense;
@@ -13,7 +14,10 @@ import play.db.jpa.JPA;
 import play.mvc.Controller;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
+import org.apache.commons.mail.EmailException;
 
 /**
  * Controller for creating and displaying expenses
@@ -72,6 +76,8 @@ public class Expenses extends Controller {
         checkErrorsWithRollback();
         Set<String> dueUsernames = Sets.newHashSet();
 
+        Set<String> emails = Sets.newHashSet();
+        List<Due> dues = Lists.newArrayList();
         while(params.get(dueUsername + String.valueOf(iteration)) != null) {
             String fromUsername = params.get(dueUsername + String.valueOf(iteration));
             String amountString = params.get(dueAmount + String.valueOf(iteration));
@@ -112,12 +118,18 @@ public class Expenses extends Controller {
             totalDues = totalDues.add(new BigDecimal(amountString));
             checkErrorsWithRollback();
             Due.saveDue(due);
+            dues.add(due);
             iteration++;
         }
         if (totalDues.doubleValue() != expense.amount) {
             validation.addError("due", "Sum of due amounts do not equal expense amount");
         }
         checkErrorsWithRollback();
+        try {
+            Emailer.sendExpenseEmail(emails, expense, dues);
+        } catch (EmailException ex) {
+            // Ignore
+        }
         Transactions.showTransactions();
     }
 
