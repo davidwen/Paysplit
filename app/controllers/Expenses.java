@@ -128,7 +128,7 @@ public class Expenses extends Controller {
         try {
             Emailer.sendExpenseEmail(emails, expense, dues);
         } catch (EmailException ex) {
-            // Ignore
+            System.out.println(ex);
         }
         Transactions.showTransactions();
     }

@@ -37,7 +37,6 @@ public class Emailer {
             msg += due.fromUser.username + " paid " +
                 CURRENCY_FORMAT.format(due.amount) + "\n"; 
         }
-        System.out.println(msg);
         for (String emailAddress : emails) {
             SimpleEmail email = new SimpleEmail();
             email.setFrom("noreply@paysplit.net");
