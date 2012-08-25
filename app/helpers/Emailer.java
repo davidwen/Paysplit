@@ -39,7 +39,7 @@ public class Emailer {
         }
         for (String emailAddress : emails) {
             SimpleEmail email = new SimpleEmail();
-            email.setFrom("noreply@paysplit.net");
+            email.setFrom("noreply@paysplit.net", "Paysplit");
             email.addTo(emailAddress);
             email.setSubject("New Paysplit Expense - " + expense.description);
             email.setMsg(msg);
