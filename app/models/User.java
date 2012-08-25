@@ -11,8 +11,6 @@ import play.data.validation.Validation;
 import play.db.jpa.Model;
 import play.mvc.Scope.Session;
 import controllers.Application;
-import exceptions.EntityNotFoundException;
-import exceptions.TooManyEntitiesException;
 
 /**
  * A user represents a user who can make expenses and payments.
@@ -34,17 +32,12 @@ public class User extends Model{
 
     public Date lastLoginDate;
 
-    public static User fromUsername(String username) throws EntityNotFoundException {
+    public static User fromUsername(String username) {
         List<User> users = User.find("byUsername", username).fetch();
-        if (users.size() == 1) {
-            return users.get(0);
-        } if (users.isEmpty()) {
-            throw new EntityNotFoundException(
-                    "No users found with username " + username);
+        if (users.isEmpty()) {
+            return null;
         } else {
-            throw new TooManyEntitiesException(
-                    "Unexpected number of users with username " + username +
-                    ": " + users.size());
+            return users.get(0);
         }
     }
 

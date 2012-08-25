@@ -5,7 +5,6 @@ import java.util.Date;
 import models.User;
 import play.libs.Crypto;
 import play.mvc.Controller;
-import exceptions.EntityNotFoundException;
 
 /**
  * Controller for general site functions
@@ -28,23 +27,23 @@ public class Application extends Controller {
     }
 
     public static void login(String username, String password) {
-        try {
-            User user = User.fromUsername(username);
-            if (Crypto.passwordHash(password).equals(user.hashedPassword)) {
-                session.put("userId", user.getId().toString());
-                session.put("username", user.username);
-                user.lastLoginDate = new Date();
-                user.save();
-                Dashboard.dashboard();
-            } else {
-                validation.addError("password", "Incorrect password");
-                validation.keep();
-                index();
-            }
-        } catch (EntityNotFoundException e) {
+        User user = User.fromUsername(username);
+        if (user == null) {
             validation.addError("username", "No username found: " + username);
             validation.keep();
             params.flash();
+            index();
+        }
+
+        if (Crypto.passwordHash(password).equals(user.hashedPassword)) {
+            session.put("userId", user.getId().toString());
+            session.put("username", user.username);
+            user.lastLoginDate = new Date();
+            user.save();
+            Dashboard.dashboard();
+        } else {
+            validation.addError("password", "Incorrect password");
+            validation.keep();
             index();
         }
     }

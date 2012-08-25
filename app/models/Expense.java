@@ -15,11 +15,15 @@ import play.db.jpa.Model;
 
 @Entity
 @Table(name="expenses")
-public class Expense extends Model{
+public class Expense extends Model {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     public User user;
+
+    @ManyToOne
+    @JoinColumn(name="createdBy", nullable=false)
+    public User createdBy;
 
     @Column(columnDefinition="Decimal(8,2)", nullable=false)
     public double amount;

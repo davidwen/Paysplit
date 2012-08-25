@@ -1,6 +1,6 @@
 /** Create Expense **/
 
-$expense-form-width	: 300px;
+$expense-form-width	: 330px;
 $pay-text-width: 60px;
 
 .submit-expense-content {
@@ -74,7 +74,7 @@ $pay-text-width: 60px;
 }
 
 .submit-expense-user-input, .submit-expense-amount-input {
-	width: ($expense-form-width - $pay-text-width)/2 - 6px;
+	width: ($expense-form-width - $pay-text-width)/2 - 10px;
 }
 
 .submit-expense-pay-text {

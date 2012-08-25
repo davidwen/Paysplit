@@ -64,6 +64,7 @@ public class Tutorial extends Controller {
         expense.amount = amount;
         expense.description = description;
         expense.user = user;
+        expense.createdBy = user;
         expense.addDate = new Date();
 
         Map<String, Double> usernameToAmountMap = Maps.newHashMap();
@@ -76,9 +77,9 @@ public class Tutorial extends Controller {
         checkErrors();
         Set<String> dueUsernames = Sets.newHashSet();
 
-        while(params.get(dueUsername + String.valueOf(iteration)) != null) {
-            String fromUsername = params.get(dueUsername + String.valueOf(iteration));
-            String amountString = params.get(dueAmount + String.valueOf(iteration));
+        while(params.get(dueUsername + iteration) != null) {
+            String fromUsername = params.get(dueUsername + iteration);
+            String amountString = params.get(dueAmount + iteration);
 
             /* Username validation */
             if (fromUsername.trim().length() == 0) {

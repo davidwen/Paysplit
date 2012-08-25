@@ -18,6 +18,9 @@
         <td>#{a @Users.showUser(expense.user.id)}${expense.user.username}#{/a}</td>
       </tr>
       <tr>
+        <td>Submitted By:</td>
+        <td>#{a @Users.showUser(expense.createdBy.id)}${expense.createdBy.username}#{/a}</td>
+      <tr>
         <td>Date:</td>
         <td>${expense.addDate.format("MM/dd/yyyy hh:mm a")}</td>
       </tr>

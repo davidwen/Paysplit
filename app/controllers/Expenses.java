@@ -15,8 +15,6 @@ import play.mvc.Controller;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 
-import exceptions.EntityNotFoundException;
-
 /**
  * Controller for creating and displaying expenses
  * @author davidwen
@@ -30,16 +28,21 @@ public class Expenses extends Controller {
         render();
     }
 
-    public static void submitExpense(double amount, String description)
+    public static void submitExpense(Double amount, String description, String expenseUsername)
     {
         User user = User.fromSession(session);
         if (User.isTour(user)) {
-            validation.addError("amount", "Cannot create expenses on the tour account. Log out and create your own account!");
+            validation.addError("expense", "Cannot create expenses on the tour account. Log out and create your own account!");
         }
 
         validation.required(amount);
         if (amount <= 0) {
-            validation.addError("amount", "Expense amount must be positive");
+            validation.addError("expense", "Expense amount must be positive");
+        }
+
+        User expenseUser = User.fromUsername(expenseUsername);
+        if (expenseUser == null) {
+            validation.addError("expense", "Invalid expense username: " + expenseUsername);
         }
 
         if (validation.hasErrors()) {
@@ -56,7 +59,8 @@ public class Expenses extends Controller {
         Expense expense = new Expense();
         expense.amount = amount;
         expense.description = description;
-        expense.user = user;
+        expense.createdBy = user;
+        expense.user = expenseUser;
         expense.addDate = new Date();
         expense.save();
 
@@ -72,27 +76,27 @@ public class Expenses extends Controller {
             String fromUsername = params.get(dueUsername + String.valueOf(iteration));
             String amountString = params.get(dueAmount + String.valueOf(iteration));
             Due due = new Due();
-            due.toUser = user;
+            due.toUser = expenseUser;
             due.expense = expense;
             due.addDate = new Date();
 
             /* Username validation */
-            try {
-                due.fromUser = User.fromUsername(fromUsername);
-            } catch (EntityNotFoundException e) {
+            due.fromUser = User.fromUsername(fromUsername);
+            if (due.fromUser == null) {
                 if (Strings.isNullOrEmpty(fromUsername)) {
                     validation.addError("due", "Missing due username");
                 } else {
                     validation.addError("due", "Invalid due username: " + fromUsername);
                 }
             }
+
             if (!dueUsernames.contains(fromUsername)) {
                 dueUsernames.add(fromUsername);
             } else {
                 validation.addError("due", "Username " + fromUsername + " entered more than once");
             }
-            if (user.username.equals(fromUsername)) {
-                validation.addError("due", "Cannot create a due from yourself on your expense");
+            if (expenseUser.username.equals(fromUsername)) {
+                validation.addError("due", "Username " + fromUsername + " entered more than once");
             }
 
             /* Amount validation */
@@ -130,14 +134,15 @@ public class Expenses extends Controller {
             notFound();
         }
         boolean isExpenseOwner =
-            expense.user.id == user.id;
+            expense.user.id == user.id ||
+            expense.createdBy.id == user.id;
         render(user, expense, isExpenseOwner);
     }
 
     public static void deleteExpense(long expenseId) {
         User user = User.fromSession(session);
         Expense expense = Expense.findById(expenseId);
-        if (expense.user.id != user.id) {
+        if (expense.user.id != user.id && expense.createdBy.id != user.id) {
             forbidden();
         }
         for (Due due : expense.dues) {

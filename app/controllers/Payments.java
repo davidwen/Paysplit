@@ -9,8 +9,6 @@ import play.mvc.Controller;
 
 import com.google.common.base.Strings;
 
-import exceptions.EntityNotFoundException;
-
 public class Payments extends Controller {
 
     public static void createPayment() {
@@ -39,11 +37,8 @@ public class Payments extends Controller {
         description = StringUtil.normalizeWhitespace(description);
 
         /* Username validation */
-        try {
-
-            otherUser = User.fromUsername(username);
-        } catch (EntityNotFoundException e) {
-
+        otherUser = User.fromUsername(username);
+        if (otherUser == null) {
             validation.addError("username", "Invalid username: " + username);
         }
 
