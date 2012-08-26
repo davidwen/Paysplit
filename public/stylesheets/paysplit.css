@@ -756,9 +756,8 @@ header {
 /** Show Payment **/
 /* line 76, ../sass/_payments.scss */
 .show-payment-content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+  min-width: 300px;
+  width: 50%;
 }
 
 /* line 1, ../sass/_balances.scss */

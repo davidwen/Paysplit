@@ -75,6 +75,6 @@ $create-payment-width	: 540px;
 
 .show-payment-content {
 	@extend .content;
-	@include _centered;
-	width: 100%;
+	min-width: 300px;
+	width: 50%;
 }
