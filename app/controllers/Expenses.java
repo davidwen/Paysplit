@@ -158,11 +158,19 @@ public class Expenses extends Controller {
         if (expense.user.id != user.id && expense.createdBy.id != user.id) {
             forbidden();
         }
+        Set<String> emails = Sets.newHashSet(
+            expense.user.emailAddress, expense.createdBy.emailAddress);
         for (Due due : expense.dues) {
             Balance.adjustBalance(due.toUser, due.fromUser, due.amount);
+            emails.add(due.fromUser.emailAddress);
             due.delete();
         }
         expense.delete();
+        try {
+            Emailer.sendDeleteExpenseEmail(emails, expense, expense.dues);
+        } catch (EmailException ex) {
+            System.out.println(ex);
+        }
         flash.success("Expense deleted");
         Transactions.showTransactions();
     }

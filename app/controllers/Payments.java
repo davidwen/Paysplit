@@ -3,11 +3,15 @@ package controllers;
 import java.util.Date;
 import java.util.List;
 
+import helpers.Emailer;
 import models.Payment;
 import models.User;
 import play.mvc.Controller;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Sets;
+
+import org.apache.commons.mail.EmailException;
 
 public class Payments extends Controller {
 
@@ -66,6 +70,13 @@ public class Payments extends Controller {
         payment.amount = amount;
 
         Payment.savePayment(payment);
+        try {
+            Emailer.sendPaymentEmail(
+                Sets.newHashSet(payment.fromUser.emailAddress, payment.toUser.emailAddress),
+                payment);
+        } catch (EmailException ex) {
+            System.out.println(ex);
+        }
         Transactions.showTransactions();
     }
 
