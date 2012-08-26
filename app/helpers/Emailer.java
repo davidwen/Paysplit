@@ -69,6 +69,10 @@ public class Emailer {
         String subject,
         String msg)
     throws EmailException {
+        msg = msg + "\n\n" +
+            "To disable notification messages like this, " +
+            "you may change your notification settings in " +
+            "your Paysplit account settings page.";
         for (String emailAddress : emails) {
             SimpleEmail email = new SimpleEmail();
             email.setFrom(FROM_ADDRESS, "Paysplit");
