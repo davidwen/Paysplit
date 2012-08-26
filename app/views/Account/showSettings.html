@@ -25,18 +25,31 @@
     #{form @Account.changeEmail()}
       <span class="error">#{error 'email' /}</span>
       #{if "true".equals(flash.get("emailConfirmation"))}
-        <span class="success">Email address changed successfully!</span>
+        <span class="success">E-mail address changed successfully!</span>
       #{/if}
-      <div class="form-section-label">Change Email Address</div>
+      <div class="form-section-label">Change E-mail Address</div>
       <div class="form-section">
-        <div class="form-label-text">Old email address: </div>
+        <div class="form-label-text">Old e-mail address: </div>
         <div>${user.emailAddress}</div>
       </div>
       <div class="form-section">
-        <div class="form-label-text">New email address: </div>
+        <div class="form-label-text">New e-mail address: </div>
         <input type="text" class="form-input" name="newEmail">
       </div>
       <input type="submit" class="form-submit button" value="Change E-mail Address">
     #{/form}
   </div>
+  <div class="form-container">
+    #{form @Account.setReceiveEmail()}
+      #{if "true".equals(flash.get("receiveEmailConfirmation"))}
+        <span class="success">E-mail notification settings saved!</span>
+      #{/if}
+      <div class="form-section-label">Change E-mail Notification Settings</div>
+        <div>
+          <input type="checkbox" name="receiveEmail" id="receiveEmail" value="true" #{if user.receiveEmail}checked#{/if}>
+          <label for="receiveEmail">Please send me e-mail notifications when an expense or payment that I am involved in is submitted or modified.</label>
+        </div>
+      </div>
+      <input type="submit" class="form-submit button" value="Save E-mail Notification Settings">
+    #{/form}
 </div>

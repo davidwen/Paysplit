@@ -27,6 +27,7 @@ public class User extends Model{
 
     @Column(nullable=false)
     public String emailAddress;
+    public boolean receiveEmail;
 
     public Date addDate;
 

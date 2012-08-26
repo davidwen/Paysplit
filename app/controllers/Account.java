@@ -50,4 +50,16 @@ public class Account extends Controller {
         }
         showSettings();
     }
+
+    public static void setReceiveEmail(Boolean receiveEmail) {
+        User user = User.fromSession(session);
+        if (Boolean.TRUE.equals(receiveEmail)) {
+            user.receiveEmail = true;
+        } else {
+            user.receiveEmail = false;
+        }
+        user.save();
+        flash.put("receiveEmailConfirmation", "true");
+        showSettings();
+    }
 }
