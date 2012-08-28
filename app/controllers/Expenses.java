@@ -179,7 +179,7 @@ public class Expenses extends Controller {
         if (validation.hasErrors()) {
             params.flash();
             validation.keep();
-            JPA.setRollbackOnly();
+            JPA.em().getTransaction().rollback();
             createExpense();
         }
     }
