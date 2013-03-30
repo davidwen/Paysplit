@@ -12,6 +12,7 @@ GET		/expenses/{expenseId}					Expenses.showExpense
 GET		/expenses/{expenseId}/delete			Expenses.deleteExpense
 GET		/payments/new							Payments.createPayment
 GET		/payments/{paymentId}					Payments.showPayment
+GET     /payments/{paymentId}/delete            Payments.deletePayment
 GET		/balances								Balances.showBalances
 GET		/transactions							Transactions.showTransactions
 GET		/account/settings						Account.showSettings

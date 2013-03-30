@@ -2,8 +2,10 @@ package controllers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import helpers.Emailer;
+import models.Balance;
 import models.Payment;
 import models.User;
 import play.mvc.Controller;
@@ -97,6 +99,25 @@ public class Payments extends Controller {
             forbidden();
         }
         render(user, payment);
+    }
+
+    public static void deletePayment(long paymentId) {
+        User user = User.fromSession(session);
+        Payment payment = Payment.findById(paymentId);
+        if (payment.fromUser.id != user.id && payment.toUser.id != user.id) {
+            forbidden();
+        }
+        Set<String> emails = Sets.newHashSet(
+            payment.fromUser.emailAddress, payment.toUser.emailAddress);
+        Balance.adjustBalance(payment.fromUser, payment.toUser, payment.amount);
+        payment.delete();
+        try {
+            Emailer.sendDeletePaymentEmail(emails, payment);
+        } catch (EmailException ex) {
+            System.out.println(ex);
+        }
+        flash.success("Payment deleted");
+        Transactions.showTransactions();
     }
 
     private static void checkErrors() {

@@ -33,4 +33,9 @@
       #{/if}
     </tbody>
   </table>
+  <div class="delete-payment-container">
+    #{a @Payments.deletePayment(payment.id)}
+      <span class="red button">Delete Payment</span>
+    #{/a}
+  </div>
 </div>

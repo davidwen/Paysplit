@@ -40,11 +40,7 @@ public class Emailer {
         String msg =
             "A new payment has been submitted on Paysplit\n" +
             "\n" +
-            "Description: " + payment.description + "\n" +
-            "Amount: " + CURRENCY_FORMAT.format(payment.amount) + "\n" +
-            "Paid By: " + payment.fromUser.username + "\n" +
-            "Paid To: " + payment.toUser.username + "\n" +
-            "Date: " + payment.addDate + "\n";
+            getPaymentMessage(payment);
         sendEmails(
             emails,
             "New Paysplit Payment - " + payment.description,
@@ -61,6 +57,18 @@ public class Emailer {
         sendEmails(
             emails,
             "Deleted Paysplit Expense - " + expense.description,
+            msg);
+    }
+
+    public static void sendDeletePaymentEmail(
+        Collection<String> emails,
+        Payment payment)
+    throws EmailException {
+        String msg = "The following payment has been deleted on Paysplit\n\n" +
+            getPaymentMessage(payment);
+        sendEmails(
+            emails,
+            "Deleted Paysplit Payment - " + payment.description,
             msg);
     }
 
@@ -99,4 +107,13 @@ public class Emailer {
         return msg;
     }
 
+    private static String getPaymentMessage(Payment payment) {
+        String msg =
+            "Description: " + payment.description + "\n" +
+            "Amount: " + CURRENCY_FORMAT.format(payment.amount) + "\n" +
+            "Paid By: " + payment.fromUser.username + "\n" +
+            "Paid To: " + payment.toUser.username + "\n" +
+            "Date: " + payment.addDate + "\n";
+        return msg;
+    }
 }
