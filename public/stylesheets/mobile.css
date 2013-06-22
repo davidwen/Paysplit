@@ -1,25 +1,21 @@
 /* line 5, ../sass/mobile.scss */
 body {
+  background-color: #dddddd;
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* line 10, ../sass/mobile.scss */
+/* line 11, ../sass/mobile.scss */
 div.ui-input-text input.ui-input-text {
   background-color: white;
 }
 
-/* line 15, ../sass/mobile.scss */
+/* line 16, ../sass/mobile.scss */
 .header {
   background-color: green;
   color: #dddddd;
   font-size: 1.5em;
   padding: .4em;
   text-align: center;
-}
-
-/* line 23, ../sass/mobile.scss */
-.content {
-  background-color: #dddddd;
 }
 
 /* line 27, ../sass/mobile.scss */
@@ -36,5 +32,14 @@ div.ui-input-text input.ui-input-text {
 
 /* line 37, ../sass/mobile.scss */
 .form-section {
-  margin: 2em auto;
+  margin: 1em auto;
+}
+/* line 40, ../sass/mobile.scss */
+.form-section.submit-section {
+  margin: 2.5em auto;
+}
+
+/* line 45, ../sass/mobile.scss */
+.home-form-errors {
+  text-align: center;
 }

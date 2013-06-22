@@ -3,6 +3,7 @@ $light  : #dddddd;
 $dark   : #333333;
 
 body {
+    background-color: $light;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -21,7 +22,6 @@ div.ui-input-text {
 }
 
 .content {
-    background-color: $light;
 }
 
 .button {
@@ -35,5 +35,13 @@ div.ui-input-text {
 }
 
 .form-section {
-    margin: 2em auto;
+    margin: 1em auto;
+
+    &.submit-section {
+        margin: 2.5em auto;
+    }
+}
+
+.home-form-errors {
+    text-align: center;
 }
