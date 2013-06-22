@@ -1,0 +1,11 @@
+#{extends 'mobile-main.html' /}
+
+<div class="header">#{get 'title' /}</div>
+
+#{doLayout /}
+
+<div class="footer ui-bar" data-role="footer" data-position="fixed">
+  <a href="@Expenses.createExpense()" data-role="button">Submit Expense</a>
+  <a href="@Expenses.createExpense()" data-role="button">View Balances</a>
+  <a href="@Expenses.createExpense()" data-role="button">Submit Payment</a>
+</div>

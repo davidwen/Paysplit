@@ -1,27 +1,32 @@
-#{extends 'mobile-main.html' /}
+#{extends 'mobile-header-footer.html' /}
+#{set title:'Dashboard' /}
 
-<div class="dashboard-content">
+<div class="content">
   <div class="dashboard-balanced-owed-by">
     #{if positiveBalance > 0}
       <a class="balance-display dashboard-unbalanced" href="@{Balances.showBalances()}">
-        $${positiveBalance.format("0.00")} owed by you
+        <div class="amount">$${positiveBalance.format("0.00")}</div>
+        <div class="text">owed by you</div>
       </a>
     #{/if}
     #{else}
       <a class="balance-display dashboard-balanced" href="@{Balances.showBalances()}">
-        No money owed by you
+        <div class="amount">$0</div>
+        <div class="text">owed by you</div>
       </a>
     #{/else}
   </div>
   <div class="dashboard-balanced-owed-to">
     #{if negativeBalance > 0}
       <a class="balance-display dashboard-unbalanced" href="@{Balances.showBalances()}">
-        <span>$${negativeBalance.format("0.00")} owed to you</span>
+        <div class="amount">$${negativeBalance.format("0.00")}</div>
+        <div class="text">owed to you</div>
       </a>
     #{/if}
     #{else}
       <a class="balance-display dashboard-balanced" href="@{Balances.showBalances()}">
-        <span>No money owed to you</span>
+        <div class="amount">$0</div>
+        <div class="text">owed to you</div>
       </a>
     #{/else}
   </div>
@@ -29,14 +34,13 @@
   <div class="clear"></div>
 
   <div class="dashboard-recent-transactions">
-    <div class="dashboard-table-label">Recent Transactions</div>
-    <table class="displaytable">
+    <table>
       <thead>
         <tr>
           <td style="width: 18%">Type</td>
-          <td style="width: 25%">From</td>
-          <td style="width: 25%">To</td>
-          <td style="width: 14%">Amount</td>
+          <td style="width: 23%">From</td>
+          <td style="width: 23%">To</td>
+          <td style="width: 18%">Amount</td>
           <td style="width: 18%">Date</td>
         </tr>
       </thead>
@@ -48,11 +52,11 @@
       #{else}
         #{list items:transactions, as:'transaction'}
           <tr>
-            <td><a href=${transaction.url}>${transaction.type}</a></td>
-            <td><a href=@{Users.showUser(transaction.fromUser.id)}>${transaction.fromUser.username}</a></td>
-            <td><a href=@{Users.showUser(transaction.toUser?.id)}>${transaction.toUser?.username}</a></td>
-            <td>$${transaction.amount.format("0.00")}</td>
-            <td>${transaction.addDate.format("MM/dd/yyyy")}</td>
+            <td class="type">${transaction.type}</td>
+            <td class="user">${transaction.fromUser.username}</td>
+            <td class="user">${transaction.toUser?.username}</td>
+            <td class="amount">$${transaction.amount.format("0.00")}</td>
+            <td class="date">${transaction.addDate.format("MM/dd/yyyy")}</td>
           </tr>
         #{/list}
       #{/else}

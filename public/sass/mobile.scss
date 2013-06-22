@@ -22,6 +22,21 @@ div.ui-input-text {
 }
 
 .content {
+    padding: 0.5em;
+}
+
+.footer {
+    background-color: $dark;
+    text-align: center;
+    padding-bottom: 0.4em;
+
+    .ui-btn {
+        border: 1px solid $light;
+        border-radius: 0.8em;
+        color: $light;
+        margin: 0 0.3em;
+        text-decoration: none;
+    }
 }
 
 .button {
@@ -44,4 +59,68 @@ div.ui-input-text {
 
 .home-form-errors {
     text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 0.8em;
+    margin: 0 auto;
+
+    thead {
+        font-weight: bold;
+    }
+
+    td {
+        border-bottom: 1px solid $dark;
+
+        &.type, &.amount {
+            color: $green;
+        }
+    }
+}
+
+.dashboard-balanced-owed-by {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 50%;
+}
+
+.dashboard-balanced-owed-to {
+    float: right;
+    margin-bottom: 1.8em;
+    position: relative;
+    text-align: center;
+    width: 50%;
+}
+
+
+.balance-display {
+    border-radius: 0.8em;
+    color: #eee;
+    display: block;
+    height: 5em;
+    margin: 0.4em auto 0;
+    text-decoration: none;
+    width: 80%;
+
+    &.dashboard-unbalanced {
+        background-color: #8B0000
+    }
+
+    &.dashboard-balanced {
+        background-color: #86B542
+    }
+
+    .amount {
+        font-size: 2.3em;
+        padding-top: 0.2em;
+    }
+
+    .text {
+        bottom: 0.5em;
+        position: absolute;
+        font-size: 0.9em;
+        width: 80%;
+    }
 }
