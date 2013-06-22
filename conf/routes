@@ -17,6 +17,12 @@ GET		/balances								Balances.showBalances
 GET		/transactions							Transactions.showTransactions
 GET		/account/settings						Account.showSettings
 
+# Mobile
+GET     /m                                      Application.mIndex
+GET     /m/dashboard                            Dashboard.mDashboard
+# GET     /m/expenses/new                         Expenses.mCreateExpense
+# GET     /m/balances                             Balances.mShowBalances
+# GET     /m/transactions                         Transactions.mShowTransactions
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

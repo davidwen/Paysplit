@@ -18,6 +18,12 @@ public class Application extends Controller {
         render();
     }
 
+    public static void mIndex() {
+        session.remove("userId");
+        session.remove("username");
+        render();
+    }
+
     public static void register() {
         render();
     }
@@ -27,12 +33,28 @@ public class Application extends Controller {
     }
 
     public static void login(String username, String password) {
+        if (checkCredentials(username, password)) {
+            Dashboard.dashboard();
+        } else {
+            index();
+        }
+    }
+
+    public static void mLogin(String username, String password) {
+        if (checkCredentials(username, password)) {
+            Dashboard.mDashboard();
+        } else {
+            mIndex();
+        }
+    }
+
+    private static boolean checkCredentials(String username, String password) {
         User user = User.fromUsername(username);
         if (user == null) {
             validation.addError("username", "No username found: " + username);
             validation.keep();
             params.flash();
-            index();
+            return false;
         }
 
         if (Crypto.passwordHash(password).equals(user.hashedPassword)) {
@@ -40,11 +62,11 @@ public class Application extends Controller {
             session.put("username", user.username);
             user.lastLoginDate = new Date();
             user.save();
-            Dashboard.dashboard();
+            return true;
         } else {
             validation.addError("password", "Incorrect password");
             validation.keep();
-            index();
+            return false;
         }
     }
 
