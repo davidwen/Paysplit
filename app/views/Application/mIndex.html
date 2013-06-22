@@ -1,21 +1,27 @@
 #{extends 'mobile-main.html' /}
 
-#{form @mLogin()}
-  <div class="home-form form-container">
-    <div class="form-section">
-      <div class="form-label-text">Username: </div>
-      <input type="text" class="form-input" name="username">
+<div data-role="header">Log In</div>
+
+<div data-role="content">
+  #{form @mLogin()}
+    <div class="home-form form-container">
+      <div class="form-section">
+        <div class="form-label-text">Username: </div>
+        <input type="text" class="form-input" name="username">
+      </div>
+      <div class="form-section">
+        <div class="form-label-text">Password: </div>
+        <input type="password" class="form-input" name="password">
+      </div>
+      <div class="form-section">
+        <input type="submit" class="form-submit button" value="Log In">
+      </div>
     </div>
-    <div class="form-section">
-      <div class="form-label-text">Password: </div>
-      <input type="password" class="form-input" name="password">
+    <div class="home-form-errors">
+      <span class="error">#{error 'username' /}</span>
+      <span class="error">#{error 'password' /}</span>
     </div>
-    <div class="form-section">
-      <input type="submit" class="form-submit button" value="Log In">
-    </div>
-  </div>
-  <div class="home-form-errors">
-    <span class="error">#{error 'username' /}</span>
-    <span class="error">#{error 'password' /}</span>
-  </div>
-#{/form}
+  #{/form}
+</div>
+
+<div data-role="footer"></div>
