@@ -28,13 +28,13 @@ div.ui-input-text {
 .footer {
     background-color: $dark;
     text-align: center;
-    padding: 0 0.4em;
+    padding: 0.4em 0;
 
     .ui-btn {
         border: 1px solid $light;
         border-radius: 0.8em;
         color: $light;
-        margin: 0 0.3em;
+        margin: 0 0.5em;
         text-decoration: none;
     }
 }
@@ -63,7 +63,7 @@ div.ui-input-text {
 
 table {
     border-collapse: collapse;
-    font-size: 0.8em;
+    font-size: 0.6em;
     margin: 0 auto;
 
     thead {
@@ -113,14 +113,14 @@ table {
     }
 
     .amount {
-        font-size: 2.3em;
-        padding-top: 0.2em;
+        font-size: 2em;
+        padding-top: 0.25em;
     }
 
     .text {
-        bottom: 0.5em;
+        bottom: 0.8em;
         position: absolute;
-        font-size: 0.9em;
+        font-size: 0.7em;
         width: 80%;
     }
 }

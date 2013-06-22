@@ -27,14 +27,14 @@ div.ui-input-text input.ui-input-text {
 .footer {
   background-color: #333333;
   text-align: center;
-  padding: 0 0.4em;
+  padding: 0.4em 0;
 }
 /* line 33, ../sass/mobile.scss */
 .footer .ui-btn {
   border: 1px solid #dddddd;
   border-radius: 0.8em;
   color: #dddddd;
-  margin: 0 0.3em;
+  margin: 0 0.5em;
   text-decoration: none;
 }
 
@@ -67,7 +67,7 @@ div.ui-input-text input.ui-input-text {
 /* line 64, ../sass/mobile.scss */
 table {
   border-collapse: collapse;
-  font-size: 0.8em;
+  font-size: 0.6em;
   margin: 0 auto;
 }
 /* line 69, ../sass/mobile.scss */
@@ -120,13 +120,13 @@ table td.type, table td.amount {
 }
 /* line 115, ../sass/mobile.scss */
 .balance-display .amount {
-  font-size: 2.3em;
-  padding-top: 0.2em;
+  font-size: 2em;
+  padding-top: 0.25em;
 }
 /* line 120, ../sass/mobile.scss */
 .balance-display .text {
-  bottom: 0.5em;
+  bottom: 0.8em;
   position: absolute;
-  font-size: 0.9em;
+  font-size: 0.7em;
   width: 80%;
 }
