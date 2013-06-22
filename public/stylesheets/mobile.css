@@ -27,7 +27,7 @@ div.ui-input-text input.ui-input-text {
 .footer {
   background-color: #333333;
   text-align: center;
-  padding-bottom: 0.4em;
+  padding: 0 0.4em;
 }
 /* line 33, ../sass/mobile.scss */
 .footer .ui-btn {
