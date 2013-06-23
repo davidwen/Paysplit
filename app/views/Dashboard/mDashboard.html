@@ -4,13 +4,13 @@
 <div class="content">
   <div class="dashboard-balanced-owed-by">
     #{if positiveBalance > 0}
-      <a class="balance-display dashboard-unbalanced" href="@{Balances.showBalances()}">
+      <a class="balance-display dashboard-unbalanced" href="@{Balances.mShowBalances()}">
         <div class="amount">$${positiveBalance.format("0.00")}</div>
         <div class="text">owed by you</div>
       </a>
     #{/if}
     #{else}
-      <a class="balance-display dashboard-balanced" href="@{Balances.showBalances()}">
+      <a class="balance-display dashboard-balanced" href="@{Balances.mShowBalances()}">
         <div class="amount">$0</div>
         <div class="text">owed by you</div>
       </a>
@@ -18,13 +18,13 @@
   </div>
   <div class="dashboard-balanced-owed-to">
     #{if negativeBalance > 0}
-      <a class="balance-display dashboard-unbalanced" href="@{Balances.showBalances()}">
+      <a class="balance-display dashboard-unbalanced" href="@{Balances.mShowBalances()}">
         <div class="amount">$${negativeBalance.format("0.00")}</div>
         <div class="text">owed to you</div>
       </a>
     #{/if}
     #{else}
-      <a class="balance-display dashboard-balanced" href="@{Balances.showBalances()}">
+      <a class="balance-display dashboard-balanced" href="@{Balances.mShowBalances()}">
         <div class="amount">$0</div>
         <div class="text">owed to you</div>
       </a>

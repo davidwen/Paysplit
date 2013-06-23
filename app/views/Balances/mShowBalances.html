@@ -1,0 +1,47 @@
+#{extends 'mobile-header-footer.html' /}
+#{set title:'Balances' /}
+
+<div class="content">
+  <div class="balances-owed-from">
+    <div class="content">
+      <div class="balances-header">Balances Owed From You</div>
+      <table id="positive-balances-table">
+        <thead>
+          <tr>
+            <td>User</td>
+            <td>Balance Owed</td>
+          </tr>
+        </thead>
+        <tbody>
+          #{list items:positiveBalances, as:'balance'}
+          <tr>
+            <td>${balance.toUser.username}</td>
+            <td>$${balance.balance.format("0.00")}</td>
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="balances-owed-to">
+    <div class="content">
+      <div class="balances-header">Balances Owed To You</div>
+      <table id="negative-balances-table">
+        <thead>
+          <tr>
+            <td>User</td>
+            <td>Balance Owed</td>
+          </tr>
+        </thead>
+        <tbody>
+          #{list items:negativeBalances, as:'balance'}
+          <tr>
+            <td>${balance.toUser.username}</td>
+            <td>$${balance.balance.format("0.00")}</td>
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

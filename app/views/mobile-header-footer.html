@@ -5,7 +5,7 @@
 #{doLayout /}
 
 <div class="footer ui-bar" data-role="footer" data-position="fixed">
-  <a href="@Expenses.createExpense()" data-role="button">Submit<br>Expense</a>
-  <a href="@Expenses.createExpense()" data-role="button">View<br>Balances</a>
-  <a href="@Expenses.createExpense()" data-role="button">Submit<br>Payment</a>
+  <a href="@{Expenses.createExpense()}" data-role="button">Submit<br>Expense</a>
+  <a href="@{Balances.mShowBalances()}" data-role="button">View<br>Balances</a>
+  <a href="@{Expenses.createExpense()}" data-role="button">Submit<br>Payment</a>
 </div>
