@@ -76,6 +76,11 @@ table {
         &.type, &.amount {
             color: $green;
         }
+
+        &.none {
+            font-style: italic;
+            text-align: center;
+        }
     }
 }
 
@@ -123,4 +128,17 @@ table {
         font-size: 0.7em;
         width: 80%;
     }
+}
+
+
+
+
+.balances-header {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.balances-table {
+    margin-bottom: 5em;
+    width: 80%;
 }

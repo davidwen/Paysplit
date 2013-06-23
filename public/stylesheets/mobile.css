@@ -82,8 +82,13 @@ table td {
 table td.type, table td.amount {
   color: green;
 }
+/* line 80, ../sass/mobile.scss */
+table td.none {
+  font-style: italic;
+  text-align: center;
+}
 
-/* line 82, ../sass/mobile.scss */
+/* line 87, ../sass/mobile.scss */
 .dashboard-balanced-owed-by {
   float: left;
   position: relative;
@@ -91,7 +96,7 @@ table td.type, table td.amount {
   width: 50%;
 }
 
-/* line 89, ../sass/mobile.scss */
+/* line 94, ../sass/mobile.scss */
 .dashboard-balanced-owed-to {
   float: right;
   margin-bottom: 1.8em;
@@ -100,7 +105,7 @@ table td.type, table td.amount {
   width: 50%;
 }
 
-/* line 98, ../sass/mobile.scss */
+/* line 103, ../sass/mobile.scss */
 .balance-display {
   border-radius: 0.8em;
   color: #eee;
@@ -110,23 +115,35 @@ table td.type, table td.amount {
   text-decoration: none;
   width: 80%;
 }
-/* line 107, ../sass/mobile.scss */
+/* line 112, ../sass/mobile.scss */
 .balance-display.dashboard-unbalanced {
   background-color: darkred;
 }
-/* line 111, ../sass/mobile.scss */
+/* line 116, ../sass/mobile.scss */
 .balance-display.dashboard-balanced {
   background-color: #86b542;
 }
-/* line 115, ../sass/mobile.scss */
+/* line 120, ../sass/mobile.scss */
 .balance-display .amount {
   font-size: 1.8em;
   padding-top: 0.35em;
 }
-/* line 120, ../sass/mobile.scss */
+/* line 125, ../sass/mobile.scss */
 .balance-display .text {
   bottom: 0.8em;
   position: absolute;
   font-size: 0.7em;
+  width: 80%;
+}
+
+/* line 136, ../sass/mobile.scss */
+.balances-header {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+/* line 141, ../sass/mobile.scss */
+.balances-table {
+  margin-bottom: 5em;
   width: 80%;
 }
