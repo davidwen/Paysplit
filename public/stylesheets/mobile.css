@@ -27,7 +27,7 @@ div.ui-input-text input.ui-input-text {
 .footer {
   background-color: #333333;
   text-align: center;
-  padding: 0.4em 0;
+  padding: 1em 0;
 }
 /* line 33, ../sass/mobile.scss */
 .footer .ui-btn {
@@ -120,8 +120,8 @@ table td.type, table td.amount {
 }
 /* line 115, ../sass/mobile.scss */
 .balance-display .amount {
-  font-size: 2em;
-  padding-top: 0.25em;
+  font-size: 1.8em;
+  padding-top: 0.35em;
 }
 /* line 120, ../sass/mobile.scss */
 .balance-display .text {
