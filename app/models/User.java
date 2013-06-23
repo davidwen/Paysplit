@@ -50,7 +50,6 @@ public class User extends Model{
             Application.index();
         }
         Long userId = Long.parseLong(session.get("userId"));
-        Long userId = 1L;
         return findById(userId);
     }
 
