@@ -1,11 +1,16 @@
 #{extends 'mobile-main.html' /}
 
-<div class="header">#{get 'title' /}</div>
+<div data-role="header" class="header">
+  <a href="@{Dashboard.mDashboard()}">
+    <img class="back" src="@{'/public/images/home.png'}">
+  </a>
+  #{get 'title' /}
+</div>
 
 #{doLayout /}
 
 <div class="footer ui-bar" data-role="footer" data-position="fixed">
   <a href="@{Expenses.createExpense()}" data-role="button">Submit<br>Expense</a>
   <a href="@{Balances.mShowBalances()}" data-role="button">View<br>Balances</a>
-  <a href="@{Expenses.createExpense()}" data-role="button">Submit<br>Payment</a>
+  <a href="@{Payments.createPayment()}" data-role="button">Submit<br>Payment</a>
 </div>

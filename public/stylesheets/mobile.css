@@ -17,19 +17,24 @@ div.ui-input-text input.ui-input-text {
   padding: .4em;
   text-align: center;
 }
+/* line 23, ../sass/mobile.scss */
+.header .back {
+  height: 1.5em;
+  padding: .4em;
+}
 
-/* line 24, ../sass/mobile.scss */
+/* line 29, ../sass/mobile.scss */
 .content {
   padding: 0.5em;
 }
 
-/* line 28, ../sass/mobile.scss */
+/* line 33, ../sass/mobile.scss */
 .footer {
   background-color: #333333;
   text-align: center;
   padding: 1em 0;
 }
-/* line 33, ../sass/mobile.scss */
+/* line 38, ../sass/mobile.scss */
 .footer .ui-btn {
   border: 1px solid #dddddd;
   border-radius: 0.8em;
@@ -38,57 +43,57 @@ div.ui-input-text input.ui-input-text {
   text-decoration: none;
 }
 
-/* line 42, ../sass/mobile.scss */
+/* line 47, ../sass/mobile.scss */
 .button {
   background-color: green;
   border-radius: 10em;
   opacity: 0.5;
 }
 
-/* line 48, ../sass/mobile.scss */
+/* line 53, ../sass/mobile.scss */
 .error {
   color: red;
 }
 
-/* line 52, ../sass/mobile.scss */
+/* line 57, ../sass/mobile.scss */
 .form-section {
   margin: 1em auto;
 }
-/* line 55, ../sass/mobile.scss */
+/* line 60, ../sass/mobile.scss */
 .form-section.submit-section {
   margin: 2.5em auto;
 }
 
-/* line 60, ../sass/mobile.scss */
+/* line 65, ../sass/mobile.scss */
 .home-form-errors {
   text-align: center;
 }
 
-/* line 64, ../sass/mobile.scss */
+/* line 69, ../sass/mobile.scss */
 table {
   border-collapse: collapse;
   font-size: 0.6em;
   margin: 0 auto;
 }
-/* line 69, ../sass/mobile.scss */
+/* line 74, ../sass/mobile.scss */
 table thead {
   font-weight: bold;
 }
-/* line 73, ../sass/mobile.scss */
+/* line 78, ../sass/mobile.scss */
 table td {
   border-bottom: 1px solid #333333;
 }
-/* line 76, ../sass/mobile.scss */
+/* line 81, ../sass/mobile.scss */
 table td.type, table td.amount {
   color: green;
 }
-/* line 80, ../sass/mobile.scss */
+/* line 85, ../sass/mobile.scss */
 table td.none {
   font-style: italic;
   text-align: center;
 }
 
-/* line 87, ../sass/mobile.scss */
+/* line 92, ../sass/mobile.scss */
 .dashboard-balanced-owed-by {
   float: left;
   position: relative;
@@ -96,7 +101,7 @@ table td.none {
   width: 50%;
 }
 
-/* line 94, ../sass/mobile.scss */
+/* line 99, ../sass/mobile.scss */
 .dashboard-balanced-owed-to {
   float: right;
   margin-bottom: 1.8em;
@@ -105,7 +110,7 @@ table td.none {
   width: 50%;
 }
 
-/* line 103, ../sass/mobile.scss */
+/* line 108, ../sass/mobile.scss */
 .balance-display {
   border-radius: 0.8em;
   color: #eee;
@@ -115,20 +120,20 @@ table td.none {
   text-decoration: none;
   width: 80%;
 }
-/* line 112, ../sass/mobile.scss */
+/* line 117, ../sass/mobile.scss */
 .balance-display.dashboard-unbalanced {
   background-color: darkred;
 }
-/* line 116, ../sass/mobile.scss */
+/* line 121, ../sass/mobile.scss */
 .balance-display.dashboard-balanced {
   background-color: #86b542;
 }
-/* line 120, ../sass/mobile.scss */
+/* line 125, ../sass/mobile.scss */
 .balance-display .amount {
   font-size: 1.8em;
   padding-top: 0.35em;
 }
-/* line 125, ../sass/mobile.scss */
+/* line 130, ../sass/mobile.scss */
 .balance-display .text {
   bottom: 0.8em;
   position: absolute;
@@ -136,13 +141,13 @@ table td.none {
   width: 80%;
 }
 
-/* line 136, ../sass/mobile.scss */
+/* line 141, ../sass/mobile.scss */
 .balances-header {
   margin-bottom: 1em;
   text-align: center;
 }
 
-/* line 141, ../sass/mobile.scss */
+/* line 146, ../sass/mobile.scss */
 .balances-table {
   margin-bottom: 5em;
   width: 80%;
