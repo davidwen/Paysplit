@@ -42,6 +42,15 @@ public class User extends Model{
         }
     }
 
+    public static User fromSessionNoRedirect(Session session) {
+        String userIdString = session.get("userId");
+        if (userIdString == null) {
+            return null;
+        }
+        Long userId = Long.parseLong(session.get("userId"));
+        return findById(userId);
+    }
+
     public static User fromSession(Session session) {
         String userIdString = session.get("userId");
         if (userIdString == null) {

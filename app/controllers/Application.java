@@ -19,6 +19,10 @@ public class Application extends Controller {
     }
 
     public static void mIndex() {
+        User user = User.fromSessionNoRedirect(session);
+        if (user != null) {
+            Dashboard.mDashboard();
+        }
         session.remove("userId");
         session.remove("username");
         render();
