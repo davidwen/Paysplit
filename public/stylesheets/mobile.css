@@ -161,5 +161,6 @@ table td.none {
 /* line 152, ../sass/mobile.scss */
 .balances-table {
   margin-bottom: 5em;
+  font-size: 0.8em;
   width: 80%;
 }
