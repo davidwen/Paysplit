@@ -153,14 +153,8 @@ table td.none {
 }
 
 /* line 147, ../sass/mobile.scss */
-.balances-header {
-  margin-bottom: 1em;
-  text-align: center;
-}
-
-/* line 152, ../sass/mobile.scss */
 .balances-table {
-  margin-bottom: 5em;
+  margin-bottom: 3em;
   font-size: 0.8em;
   width: 80%;
 }
