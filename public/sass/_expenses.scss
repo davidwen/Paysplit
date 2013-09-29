@@ -1,6 +1,6 @@
 /** Create Expense **/
 
-$expense-form-width	: 330px;
+$expense-form-width	: 320px;
 $pay-text-width: 60px;
 
 .submit-expense-content {
@@ -59,6 +59,10 @@ $pay-text-width: 60px;
 	@include _centered;
 	margin-top: 15px;
 	text-align: center;
+}
+
+.expense-due {
+	margin-top: 5px;
 }
 
 .submit-expense-add-due {

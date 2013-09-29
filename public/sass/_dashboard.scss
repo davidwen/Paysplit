@@ -75,4 +75,8 @@
 .dashboard-footer {
 	margin-top: 80px;
 	text-align: center;
+
+	@media only screen and (max-width: 480px) {
+		font-size: 12px;
+	}
 }
