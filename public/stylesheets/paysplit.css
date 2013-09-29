@@ -573,7 +573,7 @@ header {
 
 /* line 12, ../sass/_expenses.scss */
 .submit-expense-form-container {
-  width: 310px;
+  width: 300px;
   margin-bottom: 25px;
   margin-left: auto;
   margin-right: auto;
@@ -581,13 +581,13 @@ header {
 
 /* line 17, ../sass/_expenses.scss */
 .submit-expense-form-input {
-  width: 304px;
+  width: 294px;
 }
 
 /* line 21, ../sass/_expenses.scss */
 .submit-expense-submit {
   background-color: #58aa00;
-  width: 310px;
+  width: 300px;
 }
 
 /* line 25, ../sass/_expenses.scss */
@@ -661,7 +661,7 @@ header {
 
 /* line 80, ../sass/_expenses.scss */
 .submit-expense-user-input, .submit-expense-amount-input {
-  width: 115px;
+  width: 110px;
 }
 
 /* line 84, ../sass/_expenses.scss */
