@@ -46,7 +46,7 @@
           <td style="width: 25%">From</td>
           <td style="width: 25%">To</td>
           <td style="width: 14%">Amount</td>
-          <td style="width: 18%">Date</td>
+          <td class="recent-transaction-date" style="width: 18%">Date</td>
         </tr>
       </thead>
       #{if transactions.isEmpty()}
@@ -61,7 +61,7 @@
             <td><a href=@{Users.showUser(transaction.fromUser.id)}>${transaction.fromUser.username}</a></td>
             <td><a href=@{Users.showUser(transaction.toUser?.id)}>${transaction.toUser?.username}</a></td>
             <td>$${transaction.amount.format("0.00")}</td>
-            <td>${transaction.addDate.format("MM/dd/yyyy")}</td>
+            <td class="recent-transaction-date">${transaction.addDate.format("MM/dd/yyyy")}</td>
           </tr>
         #{/list}
       #{/else}

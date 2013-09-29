@@ -481,17 +481,24 @@ header {
   }
 }
 
-/* line 35, ../sass/_dashboard.scss */
+@media only screen and (max-width: 480px) {
+  /* line 35, ../sass/_dashboard.scss */
+  .recent-transaction-date {
+    display: none;
+  }
+}
+
+/* line 41, ../sass/_dashboard.scss */
 .dashboard-unbalanced {
   background-color: #8B0000;
 }
 
-/* line 39, ../sass/_dashboard.scss */
+/* line 45, ../sass/_dashboard.scss */
 .dashboard-balanced {
   background-color: #86B542;
 }
 
-/* line 43, ../sass/_dashboard.scss */
+/* line 49, ../sass/_dashboard.scss */
 .balance-display {
   color: #eee;
   display: block;
@@ -502,24 +509,24 @@ header {
   text-decoration: none;
   width: 80%;
 }
-/* line 54, ../sass/_dashboard.scss */
+/* line 60, ../sass/_dashboard.scss */
 .balance-display:hover {
   color: #ccc;
 }
 
-/* line 59, ../sass/_dashboard.scss */
+/* line 65, ../sass/_dashboard.scss */
 .dashboard-recent-transactions {
   margin-top: 40px;
 }
 
-/* line 63, ../sass/_dashboard.scss */
+/* line 69, ../sass/_dashboard.scss */
 .dashboard-table-label {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* line 69, ../sass/_dashboard.scss */
+/* line 75, ../sass/_dashboard.scss */
 .dashboard-footer {
   margin-top: 80px;
   text-align: center;
