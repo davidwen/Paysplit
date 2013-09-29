@@ -9,12 +9,14 @@ import models.Balance;
 import models.Payment;
 import models.User;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 
 import org.apache.commons.mail.EmailException;
 
+@With(UserLogin.class)
 public class Payments extends Controller {
 
     public static void createPayment() {
@@ -27,7 +29,7 @@ public class Payments extends Controller {
         String description,
         Boolean paymentFromUser)
     {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         User otherUser = null;
 
         if (User.isTour(user)) {
@@ -83,14 +85,14 @@ public class Payments extends Controller {
     }
 
     public static void showPayments() {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         List<Payment> paymentsTo = Payment.find("byFromUser", user).fetch();
         List<Payment> paymentsFrom = Payment.find("byToUser", user).fetch();
         render(user, paymentsTo, paymentsFrom);
     }
 
     public static void showPayment(long paymentId) {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         Payment payment = Payment.findById(paymentId);
         if (payment == null) {
             notFound();
@@ -102,7 +104,7 @@ public class Payments extends Controller {
     }
 
     public static void deletePayment(long paymentId) {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         Payment payment = Payment.findById(paymentId);
         if (payment.fromUser.id != user.id && payment.toUser.id != user.id) {
             forbidden();

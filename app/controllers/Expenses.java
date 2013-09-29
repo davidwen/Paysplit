@@ -1,28 +1,32 @@
 package controllers;
 
+import helpers.Emailer;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import helpers.Emailer;
 import models.Balance;
 import models.Due;
 import models.Expense;
 import models.User;
+
+import org.apache.commons.mail.EmailException;
+
 import play.db.jpa.JPA;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.apache.commons.mail.EmailException;
-
 /**
  * Controller for creating and displaying expenses
  * @author davidwen
  */
+@With(UserLogin.class)
 public class Expenses extends Controller {
 
     private static String dueUsername = "dueUsername";
@@ -34,7 +38,7 @@ public class Expenses extends Controller {
 
     public static void submitExpense(Double amount, String description, String expenseUsername)
     {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         if (User.isTour(user)) {
             validation.addError("expense", "Cannot create expenses on the tour account. Log out and create your own account!");
         }
@@ -135,13 +139,13 @@ public class Expenses extends Controller {
     }
 
     public static void showExpenses() {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         List<Expense> expenses = Expense.find("byUser", user).fetch();
         render(user, expenses);
     }
 
     public static void showExpense(long expenseId) {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         Expense expense = Expense.findById(expenseId);
         if (expense == null) {
             notFound();
@@ -153,13 +157,13 @@ public class Expenses extends Controller {
     }
 
     public static void deleteExpense(long expenseId) {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         Expense expense = Expense.findById(expenseId);
         if (expense.user.id != user.id && expense.createdBy.id != user.id) {
             forbidden();
         }
         Set<String> emails = Sets.newHashSet(
-            expense.user.emailAddress, expense.createdBy.emailAddress);
+                expense.user.emailAddress, expense.createdBy.emailAddress);
         for (Due due : expense.dues) {
             Balance.adjustBalance(due.toUser, due.fromUser, due.amount);
             emails.add(due.fromUser.emailAddress);

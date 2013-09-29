@@ -5,13 +5,15 @@ import java.util.List;
 import models.Transaction;
 import models.User;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import com.google.common.collect.Lists;
 
+@With(UserLogin.class)
 public class Transactions extends Controller {
 
     public static void showTransactions() {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         List<Transaction> transactions = Transaction.fromUser(user);
         render(user, transactions);
     }
@@ -22,7 +24,7 @@ public class Transactions extends Controller {
         int iDisplayStart,
         int iDisplayLength)
     {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         List<Transaction> allTransactions = Transaction.fromUser(user);
         List<Transaction> transactions = Lists.newArrayList();
         for (Transaction transaction : allTransactions) {

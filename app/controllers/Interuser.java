@@ -8,7 +8,9 @@ import models.Payment;
 import models.Transaction;
 import models.User;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(UserLogin.class)
 public class Interuser extends Controller{
 
     public static void showStatistics(String fromUsername, String toUsername) {

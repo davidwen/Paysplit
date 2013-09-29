@@ -6,7 +6,9 @@ import models.Balance;
 import models.Transaction;
 import models.User;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(UserLogin.class)
 public class Dashboard extends Controller{
 
     private static int DISPLAY_TRANSACTIONS_NUM = 5;
@@ -22,7 +24,7 @@ public class Dashboard extends Controller{
     }
 
     private static void fillDashboardArgs() {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         double negativeBalance = 0;
         double positiveBalance = 0;
         for (Balance balance : Balance.getNegativeBalances(user)) {

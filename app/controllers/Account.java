@@ -3,11 +3,13 @@ package controllers;
 import models.User;
 import play.libs.Crypto;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(UserLogin.class)
 public class Account extends Controller {
 
     public static void showSettings() {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         if (User.isTour(user)) {
             Dashboard.dashboard();
         }
@@ -18,7 +20,7 @@ public class Account extends Controller {
         String oldPassword,
         String newPassword)
     {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         if (user.hashedPassword.equals(Crypto.passwordHash(oldPassword))) {
             user.hashedPassword = Crypto.passwordHash(newPassword);
         } else {
@@ -35,7 +37,7 @@ public class Account extends Controller {
 
     public static void changeEmail(String newEmail)
     {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         validation.email("email", newEmail);
         if (!user.emailAddress.equals(newEmail)) {
             user.emailAddress = newEmail;
@@ -52,7 +54,7 @@ public class Account extends Controller {
     }
 
     public static void setReceiveEmail(Boolean receiveEmail) {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         if (Boolean.TRUE.equals(receiveEmail)) {
             user.receiveEmail = true;
         } else {

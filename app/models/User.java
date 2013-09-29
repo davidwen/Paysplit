@@ -7,10 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import play.data.validation.Validation;
 import play.db.jpa.Model;
-import play.mvc.Scope.Session;
-import controllers.Application;
 
 /**
  * A user represents a user who can make expenses and payments.
@@ -40,26 +37,6 @@ public class User extends Model{
         } else {
             return users.get(0);
         }
-    }
-
-    public static User fromSessionNoRedirect(Session session) {
-        String userIdString = session.get("userId");
-        if (userIdString == null) {
-            return null;
-        }
-        Long userId = Long.parseLong(session.get("userId"));
-        return findById(userId);
-    }
-
-    public static User fromSession(Session session) {
-        String userIdString = session.get("userId");
-        if (userIdString == null) {
-            Validation.addError("username", "Session expired, please log in again");
-            Validation.keep();
-            Application.index();
-        }
-        Long userId = Long.parseLong(session.get("userId"));
-        return findById(userId);
     }
 
     public static boolean isTour(User user) {

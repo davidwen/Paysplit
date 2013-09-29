@@ -13,6 +13,7 @@ import models.Transaction.Type;
 import models.User;
 import play.cache.Cache;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -23,6 +24,7 @@ import com.google.common.collect.Sets;
  * Controller for driving the tutorial
  * @author davidwen
  */
+@With(UserLogin.class)
 public class Tutorial extends Controller {
 
     private static String dueUsername = "dueUsername";
@@ -44,7 +46,7 @@ public class Tutorial extends Controller {
 
     public static void submitExpense(double amount, String description)
     {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         validation.required(amount);
         if (amount <= 0) {
             validation.addError("amount", "Expense amount must be positive");
@@ -146,7 +148,7 @@ public class Tutorial extends Controller {
             transactions.add(t);
         }
         Collections.sort(transactions, new Transaction.AddDateComparator());
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         Cache.set("transactions", transactions);
 
         String mode = "tutorial";
@@ -156,7 +158,7 @@ public class Tutorial extends Controller {
     }
 
     public static void showBalances() {
-        User user = User.fromSession(session);
+        User user = UserLogin.getUser();
         List<Transaction> transactions =
                 Cache.get("transactions", List.class);
         List<Balance> negativeBalances = Lists.newArrayList();

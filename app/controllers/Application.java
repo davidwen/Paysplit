@@ -1,10 +1,14 @@
 package controllers;
 
 import java.util.Date;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import models.User;
+import play.cache.Cache;
 import play.libs.Crypto;
 import play.mvc.Controller;
+import play.mvc.Http.Cookie;
 
 /**
  * Controller for general site functions
@@ -13,18 +17,18 @@ import play.mvc.Controller;
 public class Application extends Controller {
 
     public static void index() {
-        session.remove("userId");
-        session.remove("username");
+        User user = UserLogin.getUserFromSession();
+        if (user != null) {
+            Dashboard.dashboard();
+        }
         render();
     }
 
     public static void mIndex() {
-        User user = User.fromSessionNoRedirect(session);
+        User user = UserLogin.getUserFromSession();
         if (user != null) {
             Dashboard.mDashboard();
         }
-        session.remove("userId");
-        session.remove("username");
         render();
     }
 
@@ -36,8 +40,18 @@ public class Application extends Controller {
         render();
     }
 
-    public static void login(String username, String password) {
+    public static void login(String username, String password, Boolean remember) {
         if (checkCredentials(username, password)) {
+            if (Boolean.TRUE.equals(remember)) {
+                User user = UserLogin.getUserFromSession();
+                String uuid = UUID.randomUUID().toString();
+                Cache.add(
+                    user.id.toString(),
+                    uuid,
+                    "7d");
+                response.setCookie(
+                    UserLogin.COOKIE_NAME, user.id + "::" + uuid, "7d");
+            }
             Dashboard.dashboard();
         } else {
             index();
@@ -50,6 +64,20 @@ public class Application extends Controller {
         } else {
             mIndex();
         }
+    }
+
+    public static void logout() {
+        User user = UserLogin.getUserFromSession();
+        session.clear();
+        Cache.delete(user.id.toString());
+        index();
+    }
+
+    public static void mLogout() {
+        User user = UserLogin.getUserFromSession();
+        session.clear();
+        Cache.delete(user.id.toString());
+        mIndex();
     }
 
     private static boolean checkCredentials(String username, String password) {
@@ -98,7 +126,7 @@ public class Application extends Controller {
             user.emailAddress = emailAddress;
             user.addDate = new Date();
             user.save();
-            login(username, password);
+            login(username, password, false);
         }
     }
 }
