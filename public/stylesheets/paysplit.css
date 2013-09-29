@@ -573,7 +573,7 @@ header {
 
 /* line 12, ../sass/_expenses.scss */
 .submit-expense-form-container {
-  width: 290px;
+  width: 300px;
   margin-bottom: 25px;
   margin-left: auto;
   margin-right: auto;
@@ -581,13 +581,13 @@ header {
 
 /* line 17, ../sass/_expenses.scss */
 .submit-expense-form-input {
-  width: 284px;
+  width: 294px;
 }
 
 /* line 21, ../sass/_expenses.scss */
 .submit-expense-submit {
   background-color: #58aa00;
-  width: 290px;
+  width: 300px;
 }
 
 /* line 25, ../sass/_expenses.scss */
@@ -661,10 +661,16 @@ header {
 
 /* line 80, ../sass/_expenses.scss */
 .submit-expense-user-input, .submit-expense-amount-input {
-  width: 105px;
+  width: 110px;
+}
+@media only screen and (max-width: 480px) {
+  /* line 80, ../sass/_expenses.scss */
+  .submit-expense-user-input, .submit-expense-amount-input {
+    width: 108px;
+  }
 }
 
-/* line 84, ../sass/_expenses.scss */
+/* line 87, ../sass/_expenses.scss */
 .submit-expense-pay-text {
   display: inline-block;
   text-align: center;
@@ -672,13 +678,13 @@ header {
 }
 
 /** Show Expense **/
-/* line 92, ../sass/_expenses.scss */
+/* line 95, ../sass/_expenses.scss */
 .show-expense-content {
   min-width: 300px;
   width: 50%;
 }
 
-/* line 98, ../sass/_expenses.scss */
+/* line 101, ../sass/_expenses.scss */
 .expense-dues-header {
   font-size: 14px;
   font-weight: bold;
@@ -687,7 +693,7 @@ header {
   text-align: center;
 }
 
-/* line 106, ../sass/_expenses.scss */
+/* line 109, ../sass/_expenses.scss */
 .delete-expense-container {
   margin-top: 30px;
 }
