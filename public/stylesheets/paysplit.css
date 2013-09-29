@@ -676,15 +676,21 @@ header {
   text-align: center;
   width: 60px;
 }
+@media only screen and (max-width: 480px) {
+  /* line 87, ../sass/_expenses.scss */
+  .submit-expense-pay-text {
+    width: 50px;
+  }
+}
 
 /** Show Expense **/
-/* line 95, ../sass/_expenses.scss */
+/* line 98, ../sass/_expenses.scss */
 .show-expense-content {
   min-width: 300px;
   width: 50%;
 }
 
-/* line 101, ../sass/_expenses.scss */
+/* line 104, ../sass/_expenses.scss */
 .expense-dues-header {
   font-size: 14px;
   font-weight: bold;
@@ -693,7 +699,7 @@ header {
   text-align: center;
 }
 
-/* line 109, ../sass/_expenses.scss */
+/* line 112, ../sass/_expenses.scss */
 .delete-expense-container {
   margin-top: 30px;
 }

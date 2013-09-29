@@ -88,6 +88,9 @@ $pay-text-width: 60px;
 	display: inline-block;
 	text-align: center;
 	width: $pay-text-width;
+	@media only screen and (max-width: 480px) {
+		width: $pay-text-width - 10px;
+	}
 }
 
 /** Show Expense **/
